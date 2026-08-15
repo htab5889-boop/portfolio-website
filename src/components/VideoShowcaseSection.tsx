@@ -20,6 +20,10 @@ export default function VideoShowcaseSection() {
     ? sampleVideos 
     : sampleVideos.filter(v => v.category === activeTab);
 
+  /** Get YouTube thumbnail URL */
+  const getYoutubeThumbnail = (youtubeId: string) =>
+    `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+
   return (
     <section id="showcase" className="py-28 relative bg-[#07070c] overflow-hidden">
       {/* Background Neon Orbs */}
@@ -95,16 +99,27 @@ export default function VideoShowcaseSection() {
               >
                 {/* Video Preview */}
                 <div className="relative aspect-[9/16] w-full overflow-hidden bg-surface-light">
-                  <video
-                    src={video.videoUrl}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
-                    onMouseLeave={(e) => { const v = e.currentTarget as HTMLVideoElement; v.pause(); v.currentTime = 0; }}
-                  />
+                  {video.youtubeId ? (
+                    /* YouTube Thumbnail Preview */
+                    <img
+                      src={getYoutubeThumbnail(video.youtubeId)}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  ) : (
+                    /* Local Video Preview (hover to play) */
+                    <video
+                      src={video.videoUrl}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+                      onMouseLeave={(e) => { const v = e.currentTarget as HTMLVideoElement; v.pause(); v.currentTime = 0; }}
+                    />
+                  )}
                   {/* Dark Vignette Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#07070c] via-black/30 to-transparent group-hover:via-transparent transition-all pointer-events-none"></div>
 
@@ -191,12 +206,25 @@ export default function VideoShowcaseSection() {
 
                 {/* Video Player */}
                 <div className="relative aspect-[9/16] w-full bg-black mx-auto max-h-[70vh] flex justify-center">
-                  <video
-                    src={selectedVideo.videoUrl}
-                    controls
-                    autoPlay
-                    className="w-full h-full"
-                  />
+                  {selectedVideo.youtubeId ? (
+                    /* YouTube Embed */
+                    <iframe
+                      src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+                      title={selectedVideo.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                      style={{ border: 'none' }}
+                    />
+                  ) : (
+                    /* Local Video Player */
+                    <video
+                      src={selectedVideo.videoUrl}
+                      controls
+                      autoPlay
+                      className="w-full h-full"
+                    />
+                  )}
                 </div>
 
                 {/* Modal Footer Description */}
@@ -226,3 +254,4 @@ export default function VideoShowcaseSection() {
     </section>
   );
 }
+

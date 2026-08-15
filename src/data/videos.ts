@@ -3,7 +3,8 @@ export interface VideoProject {
   title: string;
   category: 'motion-graphics' | 'promotional-editing' | 'travel-education';
   categoryLabel: string;
-  videoUrl: string; // Local MP4/MOV file path in /public
+  videoUrl?: string; // Local MP4/MOV file path in /public (fallback)
+  youtubeId?: string; // YouTube video ID for embed
   description: string;
   softwareUsed: string[];
   clientType: string;
@@ -30,7 +31,7 @@ export const sampleVideos: VideoProject[] = [
     title: 'A.R. Construction — Promotional Edit',
     category: 'promotional-editing',
     categoryLabel: 'Promotional Editing',
-    videoUrl: '/videos/promotional-edits/ar-construction-edit.mp4',
+    youtubeId: 'BekuicAOY-4',
     description: 'High-impact promotional video crafted for A.R. Construction, Jhansi. Precision-cut footage with punchy transitions, bold text callouts, and professional color grading.',
     softwareUsed: ['DaVinci Resolve', 'Color Grading'],
     clientType: 'A.R. Construction, Jhansi',
@@ -41,7 +42,7 @@ export const sampleVideos: VideoProject[] = [
     title: 'Ramvan Hotel — Promotional Edit',
     category: 'promotional-editing',
     categoryLabel: 'Promotional Editing',
-    videoUrl: '/videos/promotional-edits/ramvan-hotel-edit.mp4',
+    youtubeId: 'bCNJGZ-pCd4',
     description: 'Commercial promotional edit for Hotel Ramvan, Jhansi. Designed to attract customers with a strong opening hook, elegant visuals, and polished color grade. Video gained 30k+ views.',
     softwareUsed: ['DaVinci Resolve', 'Color Grading'],
     clientType: 'Hotel Ramvan, Jhansi',
@@ -52,7 +53,7 @@ export const sampleVideos: VideoProject[] = [
     title: 'Dubey Resort — Promotional Edit',
     category: 'promotional-editing',
     categoryLabel: 'Promotional Editing',
-    videoUrl: '/videos/promotional-edits/dubey-resort.mp4',
+    youtubeId: 'iPU1sdazF60',
     description: 'Cinematic promotional edit for Dubey Resort, highlighting the venue and amenities with engaging transitions, dynamic motion graphics, and a professional color grade.',
     softwareUsed: ['DaVinci Resolve', 'Color Grading'],
     clientType: 'Dubey Resort, Jhansi',
@@ -65,7 +66,7 @@ export const sampleVideos: VideoProject[] = [
     title: 'Bhojpur Temple — Travel & Education',
     category: 'travel-education',
     categoryLabel: 'Travel & Education',
-    videoUrl: '/videos/travel-education/bhojpur-temple.mp4',
+    youtubeId: 'RV1SYNv9Ejw',
     description: 'A cinematic travel and educational piece covering the magnificent Bhojpur Temple. Smooth transitions, warm color grading, and atmospheric sound design bring the ancient architecture to life.',
     softwareUsed: ['DaVinci Resolve', 'Color Grading'],
     clientType: 'Travel & Educational Content',
