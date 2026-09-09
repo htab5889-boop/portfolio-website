@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prince // Colorist — DaVinci Resolve Specialist</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Three.js for 3D Studio Workstation Scene -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#002e57",
+            "on-tertiary-container": "#2c2e2f",
+            "on-primary-fixed-variant": "#004882",
+            "primary-fixed": "#d3e3ff",
+            "primary-fixed-dim": "#a3c9ff",
+            "on-primary": "#00315c",
+            "surface-container-lowest": "#0e0e11",
+            "tertiary-fixed-dim": "#c6c6c8",
+            "surface-dim": "#131316",
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#1a1c1d",
+            "on-tertiary-fixed-variant": "#454749",
+            "on-secondary-fixed": "#07006c",
+            "on-surface-variant": "#c0c7d5",
+            "background": "#131316",
+            "tertiary-container": "#949597",
+            "surface": "#131316",
+            "on-secondary": "#1000a9",
+            "tertiary-fixed": "#e2e2e4",
+            "inverse-on-surface": "#313033",
+            "on-tertiary": "#2f3132",
+            "surface-container-high": "#2a2a2d",
+            "surface-container-low": "#1c1b1e",
+            "on-error": "#690005",
+            "primary-container": "#2997ff",
+            "on-primary-fixed": "#001c39",
+            "outline-variant": "#404753",
+            "secondary-fixed": "#e1e0ff",
+            "secondary-fixed-dim": "#c0c1ff",
+            "inverse-surface": "#e5e1e5",
+            "surface-bright": "#39393c",
+            "tertiary": "#c6c6c8",
+            "outline": "#8a919e",
+            "surface-container": "#201f22",
+            "error": "#ffb4ab",
+            "surface-container-highest": "#353438",
+            "secondary": "#c0c1ff",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e5e1e5",
+            "primary": "#a3c9ff",
+            "on-secondary-container": "#b0b2ff",
+            "secondary-container": "#3131c0",
+            "inverse-primary": "#0060aa",
+            "surface-tint": "#a3c9ff",
+            "on-surface": "#e5e1e5",
+            "surface-variant": "#353438",
+            "on-secondary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-5xl": "9rem",
+            "space-xs": "0.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.75rem",
+            "container-max": "1360px",
+            "space-2xs": "0.25rem",
+            "gutter-desktop": "2rem",
+            "gutter-mobile": "1rem",
+            "space-3xl": "4.5rem",
+            "space-2xl": "3rem",
+            "space-lg": "1.5rem",
+            "space-4xl": "6rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "body-xl": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-hero": ["Inter"],
+            "label-caps": ["Inter"],
+            "label-code": ["JetBrains Mono"],
+            "headline-xl-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-xl": ["Inter"],
+            "display-hero-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "body-xl": ["19px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "display-hero": ["80px", { "lineHeight": "84px", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-xl": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "display-hero-mobile": ["44px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* Apple-Grade Specular Glassmorphism */
+    .titanium-glass {
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+    .titanium-glass-subtle {
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    .cinema-radial {
+      background: radial-gradient(circle at 50% 0%, rgba(41, 151, 255, 0.14) 0%, rgba(5, 5, 7, 0) 70%);
+    }
+
+    /* Kinetic Staggered Upward Motion Blur & Reveal Animations */
+    @keyframes kineticUp {
+      0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+    }
+    .animate-kinetic-word {
+      display: inline-block;
+      animation: kineticUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+    .delay-5 { animation-delay: 0.42s; }
+    .delay-6 { animation-delay: 0.52s; }
+    .delay-7 { animation-delay: 0.62s; }
+    .delay-sub { animation-delay: 0.72s; }
+    .delay-cta { animation-delay: 0.85s; }
+    .delay-stage { animation-delay: 0.95s; }
+
+    /* Custom 3D Container Styling */
+    threejs-scene canvas {
+      outline: none;
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  </style>
+</head>
+<body class="bg-[#050507] text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-x-hidden font-body-md text-body-md">
+<!-- Ambient Cinematic Gradients -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#2997ff] opacity-[0.08] blur-[160px] rounded-full"></div>
+<div class="absolute top-[35%] right-[-10%] w-[600px] h-[500px] bg-[#3131c0] opacity-[0.06] blur-[140px] rounded-full"></div>
+<div class="absolute top-[65%] left-[-10%] w-[500px] h-[500px] bg-[#004882] opacity-[0.05] blur-[150px] rounded-full"></div>
+</div>
+<!-- Shared TopNavBar (Floating Pill with Apple-grade frosted glass) -->
+<header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 rounded-full w-[94%] max-w-container-max border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_15px_35px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out">
+<div class="flex items-center justify-between gap-6 px-6 py-3 max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_12px_#2997ff]"></span>
+<span class="text-label-caps font-label-caps font-semibold tracking-widest text-on-surface dark:text-on-surface uppercase group-hover:text-primary transition-colors duration-200">
+          Prince // Colorist
+        </span>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-7">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#about">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#capabilities">Capabilities</a>
+<a class="text-primary dark:text-primary font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#showcase">Showcase</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#reviews">Reviews</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
+</nav>
+<!-- Trailing Action Badges -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-label-caps font-label-caps text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#34c759] shadow-[0_0_8px_#34c759]"></span>
+<span>Freelance Ready</span>
+</div>
+<a class="px-5 py-2 rounded-full bg-primary-container text-[#050507] font-label-caps text-label-caps font-semibold hover:shadow-[0_0_24px_rgba(41,151,255,0.55)] hover:scale-105 active:scale-95 transition-all duration-200" href="#contact">
+          Hire Me
+        </a>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="relative z-10 pt-36 md:pt-44">
+<!-- HERO SECTION WITH EMBEDDED 3D WORKSTATION & KINETIC TEXT -->
+<section class="max-w-container-max mx-auto px-6 md:px-12 lg:px-16 text-center cinema-radial pb-20 md:pb-28">
+<!-- Eyebrow Pill -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] mb-8">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">
+          DaVinci Resolve Specialist • Available for Q1/Q2 Projects
+        </span>
+</div>
+<!-- Kinetic Animated Main Headline (Staggered Upward Motion Blur with Cubic-Bezier) -->
+<h1 class="font-display-hero text-display-hero md:text-display-hero text-4xl leading-tight md:leading-[1.06] tracking-tight text-on-surface max-w-5xl mx-auto mb-6">
+<span class="animate-kinetic-word delay-1">Crafting</span>
+<span class="animate-kinetic-word delay-2">Cinematic</span>
+<span class="animate-kinetic-word delay-3">Videos</span>
+<span class="animate-kinetic-word delay-4">&amp;</span>
+<span class="animate-kinetic-word delay-5 bg-gradient-to-r from-on-surface via-primary to-primary-container bg-clip-text text-transparent">Professional</span>
+<span class="animate-kinetic-word delay-6 bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Color</span>
+<span class="animate-kinetic-word delay-7 bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Grading.</span>
+</h1>
+<!-- Kinetic Animated Subheadline -->
+<p class="animate-kinetic-word delay-sub font-body-xl text-body-xl text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed">
+        Hi, I’m Prince — a driven 16-year-old freelance Video Editor &amp; Colorist. I cooperate closely with clients to transform vision into high-converting, polished videos that captivate audiences.
+      </p>
+<!-- Kinetic Animated Call to Actions -->
+<div class="animate-kinetic-word delay-cta flex flex-wrap items-center justify-center gap-4 mb-14">
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-[#050507] font-headline-sm text-headline-sm font-semibold tracking-tight shadow-[0_0_28px_rgba(41,151,255,0.45)] hover:shadow-[0_0_38px_rgba(41,151,255,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all" href="#showcase">
+<span>Explore Work Showcase</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-primary/40 backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-on-surface font-headline-sm text-headline-sm hover:bg-white/[0.08] active:scale-[0.98] transition-all" href="#contact">
+<span>Hire as Freelancer</span>
+</a>
+</div>
+<!-- HERO 3D PC WORKSTATION SCENE & INTEGRATED DAVINCI PIPELINE -->
+<div class="animate-kinetic-word delay-stage relative max-w-5xl mx-auto rounded-3xl titanium-glass p-4 sm:p-6 md:p-8 shadow-2xl overflow-hidden group">
+<!-- Glass Specular Reflection Highlight -->
+<div class="absolute -top-24 -left-24 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top HUD Bar -->
+<div class="flex items-center justify-between pb-5 border-b border-white/10 mb-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#ff5f56]/80 shadow-[0_0_6px_#ff5f56]"></span>
+<span class="w-3 h-3 rounded-full bg-[#ffbd2e]/80 shadow-[0_0_6px_#ffbd2e]"></span>
+<span class="w-3 h-3 rounded-full bg-[#27c93f]/80 shadow-[0_0_6px_#27c93f]"></span>
+<span class="ml-3 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="desktop_windows">desktop_windows</span>
+            DAVINCI RESOLVE STUDIO SUITE // 3D WORKSTATION
+          </span>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 font-label-code text-label-code text-primary">Rec.709 Live Calibrated</span>
+<span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 font-label-code text-label-code text-on-surface-variant">32-Bit Float</span>
+</div>
+</div>
+<!-- 3D Scene Viewport Container -->
+<div class="relative w-full rounded-2xl overflow-hidden bg-[#07070b]/90 border border-white/[0.07] shadow-inner" id="pc-3d-container">
+<!-- Embedded 3D Scene Custom Element -->
+<!-- STITCH_THREEJS_START:ANIMATION_5 class="w-full h-[520px] bg-transparent rounded-2xl block" -->
+<div class="w-full h-[520px] bg-transparent rounded-2xl block" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_5" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_5');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Three.js 3D Studio PC / Workstation Model for DaVinci Resolve Editor
+const container = document.getElementById('pc-3d-container') || document.querySelector('.threejs-container') || document.body;
+const width = container.clientWidth || 800;
+const height = container.clientHeight || 500;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.set(0, 1.8, 4.2);
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+container.appendChild(renderer.domElement);
+
+// Lighting setup - Apple Pro Cinematic Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambientLight);
+
+const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+keyLight.position.set(3, 5, 4);
+keyLight.castShadow = true;
+scene.add(keyLight);
+
+const blueRimLight = new THREE.DirectionalLight(0x2997ff, 3.5);
+blueRimLight.position.set(-4, 3, -2);
+scene.add(blueRimLight);
+
+const purpleFillLight = new THREE.PointLight(0xa855f7, 1.8, 10);
+purpleFillLight.position.set(0, 0.5, 2);
+scene.add(purpleFillLight);
+
+// Group to hold entire computer desk/workstation
+const pcGroup = new THREE.Group();
+scene.add(pcGroup);
+
+// Materials
+const darkMetalMaterial = new THREE.MeshStandardMaterial({
+  color: 0x18181c,
+  roughness: 0.25,
+  metalness: 0.85
+});
+
+const silverAluminumMaterial = new THREE.MeshStandardMaterial({
+  color: 0xd0d4dc,
+  roughness: 0.2,
+  metalness: 0.9
+});
+
+const glassScreenMaterial = new THREE.MeshStandardMaterial({
+  color: 0x050508,
+  roughness: 0.1,
+  metalness: 0.5
+});
+
+// Glowing Screen display (simulating DaVinci Resolve Timeline / Scopes UI)
+const canvas = document.createElement('canvas');
+canvas.width = 1024;
+canvas.height = 576;
+const ctx = canvas.getContext('2d');
+
+function updateScreenTexture() {
+  // Deep dark editor background
+  ctx.fillStyle = '#0f1015';
+  ctx.fillRect(0, 0, 1024, 576);
+
+  // Top header bar
+  ctx.fillStyle = '#171922';
+  ctx.fillRect(0, 0, 1024, 42);
+  ctx.fillStyle = '#2997ff';
+  ctx.fillRect(20, 14, 14, 14);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 15px sans-serif';
+  ctx.fillText('DaVinci Resolve Studio 19 — Prince Color Grade // Node Graph Pipeline', 45, 26);
+  ctx.fillStyle = '#10b981';
+  ctx.fillText('● Rec.709 Live Calibrated', 820, 26);
+
+  // Split view: Left Video Preview, Right Color Scopes & Node Graph
+  // Video preview box
+  ctx.fillStyle = '#08080a';
+  ctx.fillRect(20, 56, 560, 310);
+  // Stylized cinematic gradient preview in viewer
+  const grad = ctx.createLinearGradient(20, 56, 580, 366);
+  grad.addColorStop(0, '#1e3a8a');
+  grad.addColorStop(0.5, '#0ea5e9');
+  grad.addColorStop(1, '#f97316');
+  ctx.fillStyle = grad;
+  ctx.fillRect(35, 70, 530, 280);
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 22px sans-serif';
+  ctx.fillText('CINEMATIC 4K HDR MASTER', 60, 200);
+  ctx.font = '14px sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.fillText('3840 x 2160 | 24.000 fps | Arri LogC3 to Rec.709', 60, 230);
+
+  // Right Side: Color Scopes & Waveforms
+  ctx.fillStyle = '#14161f';
+  ctx.fillRect(600, 56, 404, 310);
+  // RGB Parade / Waveform simulation
+  ctx.strokeStyle = '#2997ff';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  for(let i=0; i<380; i+=10) {
+    const y = 200 + Math.sin(i*0.05 + Date.now()*0.003)*45 + Math.random()*8;
+    if(i===0) ctx.moveTo(612+i, y);
+    else ctx.lineTo(612+i, y);
+  }
+  ctx.stroke();
+
+  // Bottom Timeline Tracks
+  ctx.fillStyle = '#12131a';
+  ctx.fillRect(20, 380, 984, 175);
+  // Audio & Video tracks
+  ctx.fillStyle = '#1d4ed8';
+  ctx.fillRect(30, 395, 240, 32);
+  ctx.fillStyle = '#0284c7';
+  ctx.fillRect(280, 395, 380, 32);
+  ctx.fillStyle = '#2563eb';
+  ctx.fillRect(670, 395, 320, 32);
+
+  // Audio wave tracks below
+  ctx.fillStyle = '#059669';
+  ctx.fillRect(30, 435, 460, 28);
+  ctx.fillRect(500, 435, 490, 28);
+
+  // Playhead needle
+  const playheadX = (Date.now() * 0.12) % 960 + 30;
+  ctx.strokeStyle = '#ef4444';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(playheadX, 380);
+  ctx.lineTo(playheadX, 555);
+  ctx.stroke();
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath();
+  ctx.moveTo(playheadX-6, 380);
+  ctx.lineTo(playheadX+6, 380);
+  ctx.lineTo(playheadX, 390);
+  ctx.fill();
+}
+
+const screenTexture = new THREE.CanvasTexture(canvas);
+const liveScreenMaterial = new THREE.MeshBasicMaterial({ map: screenTexture });
+
+// 1. MONITOR SCREEN (Ultra-thin Apple Studio Display style)
+// Outer bezel
+const monitorBezelGeo = new THREE.BoxGeometry(2.4, 1.45, 0.05);
+const monitorBezel = new THREE.Mesh(monitorBezelGeo, darkMetalMaterial);
+monitorBezel.position.set(0, 0.45, 0);
+pcGroup.add(monitorBezel);
+
+// Active Screen display
+const monitorScreenGeo = new THREE.PlaneGeometry(2.32, 1.36);
+const monitorScreen = new THREE.Mesh(monitorScreenGeo, liveScreenMaterial);
+monitorScreen.position.set(0, 0.45, 0.027);
+pcGroup.add(monitorScreen);
+
+// Monitor Stand (Apple aluminum L-stand)
+const standArmGeo = new THREE.BoxGeometry(0.24, 0.85, 0.04);
+const standArm = new THREE.Mesh(standArmGeo, silverAluminumMaterial);
+standArm.position.set(0, 0.05, -0.15);
+standArm.rotation.x = 0.15;
+pcGroup.add(standArm);
+
+const standBaseGeo = new THREE.BoxGeometry(0.55, 0.02, 0.48);
+const standBase = new THREE.Mesh(standBaseGeo, silverAluminumMaterial);
+standBase.position.set(0, -0.36, 0.05);
+pcGroup.add(standBase);
+
+// 2. PRO DESKTOP PC TOWER (Mac Pro / High-End Studio Workstation)
+const towerGroup = new THREE.Group();
+towerGroup.position.set(1.7, 0.1, -0.2);
+pcGroup.add(towerGroup);
+
+// Main Tower Chassis
+const towerChassisGeo = new THREE.BoxGeometry(0.65, 1.15, 1.1);
+const towerChassis = new THREE.Mesh(towerChassisGeo, silverAluminumMaterial);
+towerGroup.add(towerChassis);
+
+// Glass Side Panel with Internal Glow
+const sideGlassGeo = new THREE.BoxGeometry(0.02, 1.05, 0.98);
+const sideGlassMat = new THREE.MeshPhysicalMaterial({
+  color: 0x0a1128,
+  metalness: 0.1,
+  roughness: 0.05,
+  transparent: true,
+  opacity: 0.65,
+  transmission: 0.6
+});
+const sideGlass = new THREE.Mesh(sideGlassGeo, sideGlassMat);
+sideGlass.position.set(-0.33, 0, 0);
+towerGroup.add(sideGlass);
+
+// Internal GPU / Cooling LED glowing lines inside tower
+const gpuBlockGeo = new THREE.BoxGeometry(0.25, 0.35, 0.65);
+const gpuMat = new THREE.MeshStandardMaterial({ color: 0x222228, metalness: 0.9, roughness: 0.3 });
+const gpuBlock = new THREE.Mesh(gpuBlockGeo, gpuMat);
+gpuBlock.position.set(-0.05, -0.1, 0);
+towerGroup.add(gpuBlock);
+
+const ledLightGeo = new THREE.BoxGeometry(0.04, 0.04, 0.58);
+const ledGlowMat = new THREE.MeshBasicMaterial({ color: 0x2997ff });
+const ledLightStrip = new THREE.Mesh(ledLightGeo, ledGlowMat);
+ledLightStrip.position.set(-0.2, -0.05, 0);
+towerGroup.add(ledLightStrip);
+
+// Front intake honeycomb / ports
+const frontPlateGeo = new THREE.BoxGeometry(0.62, 1.12, 0.02);
+const frontPlateMat = new THREE.MeshStandardMaterial({ color: 0x15161b, metalness: 0.7, roughness: 0.4 });
+const frontPlate = new THREE.Mesh(frontPlateGeo, frontPlateMat);
+frontPlate.position.set(0, 0, 0.56);
+towerGroup.add(frontPlate);
+
+// 3. KEYBOARD & MAGIC TRACKPAD / COLORIST CONTROLLER
+const keyboardGeo = new THREE.BoxGeometry(0.9, 0.025, 0.32);
+const keyboard = new THREE.Mesh(keyboardGeo, silverAluminumMaterial);
+keyboard.position.set(-0.2, -0.37, 0.55);
+keyboard.rotation.x = 0.06;
+pcGroup.add(keyboard);
+
+const keybedGeo = new THREE.BoxGeometry(0.86, 0.015, 0.28);
+const keybedMat = new THREE.MeshStandardMaterial({ color: 0x181920, roughness: 0.4 });
+const keybed = new THREE.Mesh(keybedGeo, keybedMat);
+keybed.position.set(-0.2, -0.355, 0.55);
+keybed.rotation.x = 0.06;
+pcGroup.add(keybed);
+
+// Colorist Precision Mouse / Trackball
+const mouseGeo = new THREE.BoxGeometry(0.18, 0.05, 0.28);
+const mouseMat = new THREE.MeshStandardMaterial({ color: 0x1c1d24, metalness: 0.4, roughness: 0.2 });
+const mouse = new THREE.Mesh(mouseGeo, mouseMat);
+mouse.position.set(0.48, -0.36, 0.55);
+pcGroup.add(mouse);
+
+// Glowing RGB Ring on mouse/trackball
+const ringGeo = new THREE.RingGeometry(0.03, 0.045, 32);
+const ringMat = new THREE.MeshBasicMaterial({ color: 0x2997ff, side: THREE.DoubleSide });
+const mouseRing = new THREE.Mesh(ringGeo, ringMat);
+mouseRing.position.set(0.48, -0.334, 0.52);
+mouseRing.rotation.x = -Math.PI / 2;
+pcGroup.add(mouseRing);
+
+// 4. STUDIO MONITORS / SPEAKERS (Pair on left and right)
+function createSpeaker(xPos) {
+  const spkGroup = new THREE.Group();
+  spkGroup.position.set(xPos, 0.3, -0.05);
+  
+  const bodyGeo = new THREE.BoxGeometry(0.35, 0.65, 0.38);
+  const spkBody = new THREE.Mesh(bodyGeo, darkMetalMaterial);
+  spkGroup.add(spkBody);
+
+  const coneGeo = new THREE.CylinderGeometry(0.1, 0.04, 0.05, 32);
+  coneGeo.rotateX(Math.PI/2);
+  const coneMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.3 });
+  const cone = new THREE.Mesh(coneGeo, coneMat);
+  cone.position.set(0, -0.08, 0.18);
+  spkGroup.add(cone);
+
+  const tweeterGeo = new THREE.SphereGeometry(0.04, 16, 16);
+  const tweetMat = new THREE.MeshStandardMaterial({ color: 0x2997ff, metalness: 0.8 });
+  const tweeter = new THREE.Mesh(tweeterGeo, tweetMat);
+  tweeter.position.set(0, 0.16, 0.18);
+  spkGroup.add(tweeter);
+
+  return spkGroup;
+}
+pcGroup.add(createSpeaker(-1.6));
+pcGroup.add(createSpeaker(1.15));
+
+// Desk Surface
+const deskGeo = new THREE.BoxGeometry(4.4, 0.06, 2.0);
+const deskMat = new THREE.MeshStandardMaterial({ color: 0x111115, roughness: 0.4, metalness: 0.3 });
+const desk = new THREE.Mesh(deskGeo, deskMat);
+desk.position.set(0, -0.4, 0.2);
+pcGroup.add(desk);
+
+// Mouse and movement interaction
+let mouseX = 0;
+let mouseY = 0;
+let targetRotY = 0;
+let targetRotX = 0;
+
+function onPointerMove(e) {
+  const rect = container.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width * 2 - 1;
+  const y = -((e.clientY - rect.top) / rect.height * 2 - 1);
+  targetRotY = x * 0.45;
+  targetRotX = -y * 0.2;
+}
+
+window.addEventListener('mousemove', onPointerMove);
+
+// Resize handler
+function onResize() {
+  const newW = container.clientWidth || window.innerWidth;
+  const newH = container.clientHeight || 500;
+  camera.aspect = newW / newH;
+  camera.updateProjectionMatrix();
+  renderer.setSize(newW, newH);
+}
+window.addEventListener('resize', onResize);
+
+// Animation Loop
+let clock = new THREE.Clock();
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+  const elapsed = clock.getElapsedTime();
+
+  // Smooth rotation easing
+  pcGroup.rotation.y += (targetRotY - pcGroup.rotation.y) * 0.05;
+  pcGroup.rotation.x += (targetRotX - pcGroup.rotation.x) * 0.05;
+
+  // Gentle ambient floating
+  pcGroup.position.y = Math.sin(elapsed * 1.5) * 0.03;
+
+  // Animate DaVinci monitor canvas
+  updateScreenTexture();
+  screenTexture.needsUpdate = true;
+
+  // Pulse internal lighting
+  ledLightStrip.material.color.setHSL(0.58, 0.9, 0.5 + Math.sin(elapsed * 3) * 0.15);
+
+  renderer.render(scene, camera);
+}
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_5 -->
+<!-- Interactive Hint Overlay Pill -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#050507]/80 backdrop-blur-xl border border-white/15 text-label-code text-label-code text-primary shadow-lg">
+<span class="material-symbols-outlined text-base animate-pulse" data-icon="pan_tool">pan_tool</span>
+<span>Drag / move cursor to inspect 3D Workstation</span>
+</div>
+<!-- On-screen DaVinci Pipeline Active Monitor Overlay Tag -->
+<div class="absolute top-4 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-surface-container-lowest/80 backdrop-blur-md border border-white/10 text-label-code text-label-code text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-[#34c759] animate-ping"></span>
+<span>GPU COLOR ENGINE ACTIVE</span>
+</div>
+</div>
+<!-- DaVinci Node Pipeline Integrated Flanking Cards -->
+<div class="mt-6 pt-6 border-t border-white/10 text-left">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 font-label-code text-label-code text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="hub">hub</span>
+<span class="uppercase font-semibold">Node Pipeline Scopes</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant text-xs">YRGB COLOR MANAGED</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Node 01 -->
+<div class="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-code text-label-code text-primary font-semibold">NODE 01</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold mb-1">Exposure &amp; Balance</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Black/white calibration &amp; lift gamma gain leveling.</p>
+</div>
+<!-- Node 02 -->
+<div class="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-code text-label-code text-primary font-semibold">NODE 02</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold mb-1">CST / Camera Log</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Sony S-Log3 / Arri LogC to Davinci Wide Gamut.</p>
+</div>
+<!-- Node 03 -->
+<div class="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-code text-label-code text-primary font-semibold">NODE 03</span>
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_6px_#2997ff]"></span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold mb-1">Skin Tone Isolate</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Precision 3D Qualifier + vector scope lock.</p>
+</div>
+<!-- Node 04 -->
+<div class="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-code text-label-code text-primary font-semibold">NODE 04</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold mb-1">Filmic Print &amp; Grain</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Kodak 2383 emulation &amp; 35mm optical grain scatter.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-14 pt-8 border-t border-white/10 text-center">
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-semibold">100%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Client Reviews</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-primary font-semibold">80k+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Peak Viral Views</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-semibold">DaVinci</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">DaVinci Resolve Specialist</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-primary font-semibold">100%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Repeat Client Rate</div>
+</div>
+</div>
+</section>
+<!-- ABOUT THE EDITOR SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Biography -->
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+            ABOUT THE EDITOR
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold leading-tight">
+            Driven by Passion.<br/><span class="text-primary">Focused on Quality.</span>
+</h2>
+<div class="flex items-center gap-4 pt-2">
+<div class="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center font-headline-lg text-headline-lg font-bold text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
+              P
+            </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Prince</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">16-Year-Old Freelance Video Editor &amp; Master Colorist</p>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            I am a passionate video editor and colorist specializing in <strong class="text-on-surface font-semibold">DaVinci Resolve</strong> — the gold standard software for professional video editing and cinematic color grading.
+          </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Although I am young and starting fresh in the professional market, my dedication is unmatched. I strive to get better every single day, refining my cuts, color scopes, sound design, and visual pacing.
+          </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            I work exclusively as a <strong class="text-on-surface font-semibold">freelancer</strong>, giving me the flexibility to collaborate closely with local businesses, creators, and brands to deliver custom videos that suit their exact requirements.
+          </p>
+<!-- Pull Quote Card -->
+<div class="p-6 rounded-2xl titanium-glass border border-white/10 mt-6 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl" data-icon="format_quote">format_quote</span>
+</div>
+<blockquote class="font-body-xl text-body-xl text-on-surface font-medium italic relative z-10">
+              “Less client volume, 100% satisfaction. Every single client I’ve worked with returned for repeat projects.”
+            </blockquote>
+</div>
+</div>
+<!-- Right Column: 4 Pro Pillars Bento -->
+<div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Pillar 1 -->
+<div class="p-6 rounded-2xl titanium-glass hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">DaVinci Resolve Mastery</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Expertise in industry-grade node-based color grading, LUT creation, and precision multi-track editing.</p>
+</div>
+<!-- Pillar 2 -->
+<div class="p-6 rounded-2xl titanium-glass hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Client Cooperation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">I listen carefully to your vision and adapt the editing style, music, and pacing to match your exact goals.</p>
+</div>
+<!-- Pillar 3 -->
+<div class="p-6 rounded-2xl titanium-glass hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Relentless Growth</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">As an ambitious 16-year-old editor, I push my technical boundaries daily to deliver fresh, modern visual content.</p>
+</div>
+<!-- Pillar 4 -->
+<div class="p-6 rounded-2xl titanium-glass hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Proven Client Retention</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Worked with local businesses and creators who gave 100% top-notch reviews and returned for repeat projects.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CAPABILITIES & BENTO GRID SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="capabilities">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-3">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+          CAPABILITIES &amp; EXPERTISE
+        </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold mb-4">
+          Premium Video Editing &amp; Color Services
+        </h2>
+<p class="font-body-xl text-body-xl text-on-surface-variant">
+          Every cut, transition, and color grade is crafted with precision in DaVinci Resolve.
+        </p>
+</div>
+<!-- Bento Grid (4 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Bento Card 1: Color Grading -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">01</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">DaVinci Nodes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Professional Color Grading</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">DaVinci Resolve Scopes &amp; Primary/Secondary Nodes</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Transform flat camera footage into rich, vibrant cinematic aesthetics. Precision color correction, skin tone alignment, LUT mapping, and mood creation.
+            </p>
+</div>
+<!-- Color Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Color Correction</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Cinematic Look</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Shot Matching</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">HDR &amp; Rec.709</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Skin Tone Tuning</span>
+</div>
+</div>
+<!-- Bento Card 2: Precision Cutting & Sound -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">02</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Fairlight Suite</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Precision Cutting &amp; Sound Design</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">High-Impact Pacing &amp; Audio Engineering</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Smooth timeline editing with immaculate audio synchronization, sound design, voice enhancement, and seamless L/J cut transitions.
+            </p>
+</div>
+<!-- Audio & Editing Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Multi-Cam Cut</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Pacing &amp; Rhythm</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Audio Mastering</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Beat Sync</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Sound FX Design</span>
+</div>
+</div>
+<!-- Bento Card 3: Motion Graphics & Text FX -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">03</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Fusion FX</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Motion Graphics &amp; Text FX</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">Rise &amp; Upward Word-by-Word Text Animations</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Custom animated title cards, kinetic typography, rise and slide word reveals, lower thirds, callout badges, and logo stings.
+            </p>
+</div>
+<!-- Motion Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Kinetic Typography</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Title Animations</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Word-by-Word Rise</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Lower Thirds</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Logo Stings</span>
+</div>
+</div>
+<!-- Bento Card 4: Client Cooperation -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">04</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Dedicated 1-on-1</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Client Cooperation &amp; Adaptability</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">Custom Tailored to Business Needs</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Direct 1-on-1 collaboration. I listen to your target audience, adjust video style accordingly, and ensure prompt revisions until 100% satisfied.
+            </p>
+</div>
+<!-- Cooperation Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Requirement Analysis</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Local Business Videos</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">Fast Turnaround</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">100% Satisfaction</span>
+<span class="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 font-label-code text-label-code text-on-surface-variant">1-on-1 Support</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PORTFOLIO SHOWCASE SECTION (Apple Keynote Gallery) -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="showcase">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+            PORTFOLIO SHOWCASE
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">Crafted for Visual Impact.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+            Categorized video projects across Motion Graphics, Promotional Editing, and Travel/Education.
+          </p>
+</div>
+<!-- Filter Pills -->
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-[#050507] font-label-code text-label-code font-semibold shadow-sm hover:scale-105 active:scale-95 transition-all">All Projects</button>
+<button class="px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-label-code text-label-code text-on-surface-variant transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Motion Graphics</button>
+<button class="px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-label-code text-label-code text-on-surface-variant transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Promotional Editing</button>
+<button class="px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 font-label-code text-label-code text-on-surface-variant transition-colors shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">Travel &amp; Education</button>
+</div>
+</div>
+<!-- Project Cards Grid (16:9 Cinematic Ratios) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1: Truth of Life -->
+<article class="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cinematic motion graphics still frame with glowing neon typography, abstract geometrical vector elements, and deep shadow isolation. Dark moody film aesthetic rendered with high dynamic range and subtle cyan and tungsten lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrr2AzoLniMODj3cJO5MYcEUTHLCNX1R_mXzj4arIomEhfL-pkJGSL9oj7i5QxiNktGx3ErY1sy5AqxyWh5DybUJBmFqLeKCkT-dTQeQgb7Ovh9L4flhq1SAXr1RT-1K4LHbCoBlvYDfywZf_3M0uYO7rGoqZ3CEDa9wfcYeB3qFHesxJ7fdKbiO_RQeSeL6wByc8wfQr4kYwkXHiF5m_tipgSg404JWkGMlgNPpvt_b5VRdyWlJ2gwQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-primary border border-white/15">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-white/15">Motion Graphics</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+                Truth of Life — Motion Graphics Edit
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+                A visually engaging motion graphics piece blending kinetic typography, animated transitions, and cinematic visual storytelling — entirely crafted in DaVinci Resolve.
+              </p>
+</div>
+</div>
+<div class="px-6 pb-6 pt-3 border-t border-white/10 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Fusion FX</span>
+</div>
+</article>
+<!-- Project 2: A.R. Construction -->
+<article class="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end industrial architecture construction site shot at dusk with dramatic lighting, steel beams, and warm tungsten work lights contrasting deep blue hour skies, graded with rich cinematic tonal curve and balanced shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz5khYgOTljcOXwaJknn9CqUM3ZaP7vtbvN5gDfhPDSGiSOyC2UkKvHuZD1TeJQZJkadwsN2fit9k4qb5Drnc6OygopXd_pWgTuJR--5hnTczRHIRsSCICTDCGWsd2Kfw_t-bWa1Al-XXui1-kjvrKE52IK0AGbL8xA05AbZtWPTRNLHhMieDViBXobtKcKbrgGF3uE6MIVk-Jy4Cv-BEMd3X6Ewgm7gsTlmWLY7lydmq7XFU8H1Y-ZQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-primary border border-white/15">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-white/15">Promotional Editing</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+                A.R. Construction — Promotional Edit
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+                High-impact promotional video crafted for A.R. Construction, Jhansi. Precision-cut footage with punchy transitions, bold text callouts, and professional color grading.
+              </p>
+</div>
+</div>
+<div class="px-6 pb-6 pt-3 border-t border-white/10 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</article>
+<!-- Project 3: Hotel Ramvan -->
+<article class="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxurious boutique hotel interior with soft warm architectural ambient lighting, pristine marble reflection, elegant dining presentation, and deep rich blacks color graded with an Apple Pro cinematic look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9JPrlgqe44POr6NjqdDqC-wGbIDFuNVDiz-lgLFEqV0DF2MDS-VTEsrz53ZCtmSiyde3qJFPJ4tazZcVjM97EGeoylt4WFvUlTdAnqHqoZPDmB1-n6GTWmVAJ6kPFEaw45vol8ixLgacl0Ex0MW6T9ahBbMdvQn_3z58l8ifbFiZnoKOs41935vaTE4sCyM4tz7Qi4Hj-RymTQs-qUpO7w-L4uPp5XQQDpvX4OxzcCeSMujUYzeJzeg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-primary border border-white/15">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-white/15">Promotional Editing</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-primary-container text-[#050507] font-label-code text-label-code font-bold shadow-lg">
+                30k+ Views
+              </div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+                Ramvan Hotel — Promotional Edit
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+                Commercial promotional edit for Hotel Ramvan, Jhansi. Designed to attract customers with a strong opening hook, elegant visuals, and polished color grade.
+              </p>
+</div>
+</div>
+<div class="px-6 pb-6 pt-3 border-t border-white/10 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</article>
+<!-- Project 4: Dubey Resort -->
+<article class="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Breathtaking luxury vacation resort with illuminated swimming pools under twilight, palm trees silhouetted against glowing sapphire skies, graded with vibrant teal and orange saturation curves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXVRBZgMK4V_gRTfj8A_jI2irL1lZYIZgG-LjNJxX-wwtsU0XQKOnpTxDBnKKcaU3Ut2r3DYyKsI81xxNe1luz3zfkMGM14sDn5BPtGzzTcGHtIxqfKMHvP9YvBoVBSDBKvPhiBK9lIZyDGmvOsVBPUCB5E90pUqrZI0tsT-zDBUeObEaImbtBtkd3lAL5NwC1YuRxTqVno1jYbjTSCRCMI9eYAEcHX4yyEnJPzgaMGQWXxQL0-uhpUw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-primary border border-white/15">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-white/15">Promotional Editing</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-primary text-[#050507] font-label-code text-label-code font-bold shadow-lg">
+                80k Peak Views
+              </div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+                Dubey Resort — Promotional Edit
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+                Cinematic promotional edit for Dubey Resort, highlighting the venue and amenities with engaging transitions, dynamic motion graphics, and a professional color grade.
+              </p>
+</div>
+</div>
+<div class="px-6 pb-6 pt-3 border-t border-white/10 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</article>
+<!-- Project 5: Bhojpur Temple -->
+<article class="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 lg:col-span-2 flex flex-col justify-between">
+<div>
+<div class="relative aspect-video lg:aspect-[21/9] bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Ancient monumental stone temple of Bhojpur with grand architectural pillars, warm sunrise light piercing through ancient stone arches, mist, and deep golden color temperature balanced against dark stone textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2swgn83I1DKMCjPzm8zXUEgHq2ePAG91wXAwFP0hAW7xt5XtUIxn798sWXDu6Tn_cxxkakf1OY57BoiXUWjbFPwOz8O3x-JSALmveM1t5gZ8VZuVI1HYewR4XiFwgFsCiD8J6g9sfMefTU7agt5LVh0agb38j6NuqzICFhepmQuDcsDjAKtbeKh2ZDPXdc9OQLvA0mjCSPF4-vjMubMhZ37Ry3WieHrRaV4y0Tf4bfDA9E_-ckQTTaQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-primary border border-white/15">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-white/15">Travel &amp; Education</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+                Bhojpur Temple — Travel &amp; Education
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+                A cinematic travel and educational piece covering the magnificent Bhojpur Temple. Smooth transitions, warm color grading, and atmospheric sound design bring the ancient architecture to life.
+              </p>
+</div>
+</div>
+<div class="px-6 pb-6 pt-3 border-t border-white/10 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</article>
+</div>
+</section>
+<!-- CLIENT REVIEWS & RETENTION SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="reviews">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+          CLIENT REVIEWS &amp; RETENTION
+        </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold mb-4">
+          Top-Notch Reviews. 100% Returning Clients.
+        </h2>
+<p class="font-body-xl text-body-xl text-on-surface-variant">
+          I prioritize quality over client volume. Every client I work with receives dedicated 1-on-1 cooperation and cinematic excellence.
+        </p>
+</div>
+<!-- Reviews Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1: Dubai/Dubey Resort -->
+<div class="p-8 rounded-3xl titanium-glass flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “The experience of working with you was awesome. You shot, edited, and managed the whole project nicely. We got around 80k views on that video and thousands of profit on our tickets due to the marketing.”
+            </p>
+</div>
+<div class="pt-6 border-t border-white/10 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dubai Resort</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">Dubai Resort, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 font-label-code text-label-code text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+              Repeat Client
+            </span>
+</div>
+</div>
+<!-- Review 2: AR Construction -->
+<div class="p-8 rounded-3xl titanium-glass flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “Your editing was awesome and you completed the project on time. Had a great experience with you. I will surely contact you for future projects.”
+            </p>
+</div>
+<div class="pt-6 border-t border-white/10 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">AR Construction</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">AR Construction, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 font-label-code text-label-code text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+              Repeat Client
+            </span>
+</div>
+</div>
+<!-- Review 3: Hotel Ramvan -->
+<div class="p-8 rounded-3xl titanium-glass flex flex-col justify-between hover:border-primary/50 hover:shadow-[0_20px_45px_-10px_rgba(41,151,255,0.15)] transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “You managed the project very efficiently and also helped us by taking revisions and making the type we wanted. You created a decent hook and our video got 30k+ views with more customers coming.”
+            </p>
+</div>
+<div class="pt-6 border-t border-white/10 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Hotel Ramvan</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">Hotel Ramvan, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 font-label-code text-label-code text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+              Repeat Client
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT / HIRE SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Details & Direct Channels -->
+<div class="lg:col-span-5 space-y-6">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+            START A FREELANCE PROJECT
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">
+            Let's Build Your Next Viral Video.
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Have a promotional edit, motion graphics package, or travel video project in mind? Fill out the form or reach out directly to discuss your project requirements.
+          </p>
+<div class="space-y-4 pt-4">
+<!-- Email -->
+<a class="p-4 rounded-2xl titanium-glass flex items-center gap-4 hover:border-primary/50 transition-all block group" href="mailto:princeahirwar.8127@gmail.com">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Direct Email Inquiry</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">princeahirwar.8127@gmail.com</div>
+</div>
+</a>
+<!-- Instagram 1 -->
+<a class="p-4 rounded-2xl titanium-glass flex items-center gap-4 hover:border-primary/50 transition-all block group" href="https://www.instagram.com/prince_editz_308/" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Instagram</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">@prince_editz_308</div>
+</div>
+</a>
+<!-- Instagram 2 -->
+<a class="p-4 rounded-2xl titanium-glass flex items-center gap-4 hover:border-primary/50 transition-all block group" href="https://www.instagram.com/mahak_unfiltered122/" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">See My Works</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">@mahak_unfiltered122</div>
+</div>
+</a>
+<!-- Freelance Availability -->
+<div class="p-4 rounded-2xl titanium-glass flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-[#34c759] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Freelance Availability</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium">Project-Based &amp; Contract Freelancing</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Inquiry Terminal Form -->
+<div class="lg:col-span-7">
+<form class="p-8 md:p-10 rounded-3xl titanium-glass space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Your Name</label>
+<input class="w-full px-4 py-3 rounded-xl bg-[#09090d]/80 border border-white/10 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all shadow-inner" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Your Email</label>
+<input class="w-full px-4 py-3 rounded-xl bg-[#09090d]/80 border border-white/10 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all shadow-inner" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Project Category</label>
+<select class="w-full px-4 py-3 rounded-xl bg-[#09090d]/80 border border-white/10 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all shadow-inner">
+<option>Promotional Video / Business Commercial</option>
+<option>Motion Graphics &amp; Kinetic Text</option>
+<option>Travel Vlog or Educational Content</option>
+<option>Dedicated Color Grading (Rec.709)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Project Requirements &amp; Details</label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-[#09090d]/80 border border-white/10 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all shadow-inner" placeholder="Tell me about your video footage, target platform, desired turnaround, and reference links..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary-container text-[#050507] font-headline-sm text-headline-sm font-semibold hover:shadow-[0_0_28px_rgba(41,151,255,0.55)] hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="button">
+<span>Send Freelance Project Request</span>
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</button>
+<div class="text-center font-label-code text-label-code text-on-surface-variant">
+              Guaranteed response within 24 hours. Confidentiality respected.
+            </div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Footer (Minimal Editorial) -->
+<footer class="docked full-width bottom border-t border-white/10 bg-[#07070a] flat no shadows transition-colors duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-container-max mx-auto gap-6">
+<!-- Brand / Identity -->
+<div class="flex flex-col items-center md:items-start">
+<span class="text-headline-sm font-headline-sm font-medium text-on-surface dark:text-on-surface tracking-tight">
+          PRINCE.
+        </span>
+<span class="text-body-md font-body-md text-on-surface-variant dark:text-on-surface-variant mt-1">
+          DaVinci Resolve Specialist &amp; Master Colorist
+        </span>
+</div>
+<!-- Footer Navigation Links -->
+<div class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#showcase">
+          Showreel Breakdown
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#capabilities">
+          Node Presets
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#capabilities">
+          LUT Catalog
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#about">
+          Workstation Specs
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#contact">
+          Terms &amp; Calibrations
+        </a>
+</div>
+<!-- Copyright Text -->
+<div class="text-body-md font-body-md text-on-surface-variant dark:text-on-surface-variant text-center md:text-right">
+        © 2025 Prince. DaVinci Resolve Specialist &amp; Master Colorist. All rights reserved.
+      </div>
+</div>
+</footer>
+<!-- Initialize Three.js 3D Studio Workstation Scene -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const sceneHolder = document.querySelector('threejs-scene');
+    if (!sceneHolder) return;
+
+    const width = sceneHolder.clientWidth || 800;
+    const height = sceneHolder.clientHeight || 520;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(0, 1.7, 4.3);
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.25;
+    sceneHolder.appendChild(renderer.domElement);
+
+    // Lighting setup - Apple Pro Cinematic Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+    keyLight.position.set(3, 5, 4);
+    keyLight.castShadow = true;
+    scene.add(keyLight);
+
+    const blueRimLight = new THREE.DirectionalLight(0x2997ff, 3.8);
+    blueRimLight.position.set(-4, 3, -2);
+    scene.add(blueRimLight);
+
+    const purpleFillLight = new THREE.PointLight(0xa855f7, 2.0, 10);
+    purpleFillLight.position.set(0, 0.5, 2);
+    scene.add(purpleFillLight);
+
+    // Group to hold entire computer desk/workstation
+    const pcGroup = new THREE.Group();
+    scene.add(pcGroup);
+
+    // Materials
+    const darkMetalMaterial = new THREE.MeshStandardMaterial({
+      color: 0x18181c,
+      roughness: 0.25,
+      metalness: 0.85
+    });
+
+    const silverAluminumMaterial = new THREE.MeshStandardMaterial({
+      color: 0xd0d4dc,
+      roughness: 0.2,
+      metalness: 0.9
+    });
+
+    // Glowing Screen display (simulating DaVinci Resolve Timeline / Scopes UI)
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 576;
+    const ctx = canvas.getContext('2d');
+
+    function updateScreenTexture() {
+      // Deep dark editor background
+      ctx.fillStyle = '#0d0e14';
+      ctx.fillRect(0, 0, 1024, 576);
+
+      // Top header bar
+      ctx.fillStyle = '#161822';
+      ctx.fillRect(0, 0, 1024, 42);
+      ctx.fillStyle = '#2997ff';
+      ctx.fillRect(20, 14, 14, 14);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 15px sans-serif';
+      ctx.fillText('DaVinci Resolve Studio 19 — Prince Color Grade // Node Scopes Active', 45, 26);
+      ctx.fillStyle = '#10b981';
+      ctx.fillText('● Rec.709 Live Calibrated', 810, 26);
+
+      // Video preview box
+      ctx.fillStyle = '#06070a';
+      ctx.fillRect(20, 56, 560, 310);
+      const grad = ctx.createLinearGradient(20, 56, 580, 366);
+      grad.addColorStop(0, '#1e3a8a');
+      grad.addColorStop(0.5, '#0284c7');
+      grad.addColorStop(1, '#f97316');
+      ctx.fillStyle = grad;
+      ctx.fillRect(35, 70, 530, 280);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 22px sans-serif';
+      ctx.fillText('CINEMATIC 4K HDR MASTER', 60, 200);
+      ctx.font = '14px sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText('3840 x 2160 | 24.000 fps | Arri LogC3 to Rec.709', 60, 230);
+
+      // Right Side: Color Scopes & Waveforms
+      ctx.fillStyle = '#12141d';
+      ctx.fillRect(600, 56, 404, 310);
+      ctx.strokeStyle = '#2997ff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for(let i=0; i<380; i+=10) {
+        const y = 200 + Math.sin(i*0.05 + Date.now()*0.0035)*45 + Math.random()*8;
+        if(i===0) ctx.moveTo(612+i, y);
+        else ctx.lineTo(612+i, y);
+      }
+      ctx.stroke();
+
+      // Bottom Timeline Tracks
+      ctx.fillStyle = '#101118';
+      ctx.fillRect(20, 380, 984, 175);
+      ctx.fillStyle = '#1d4ed8';
+      ctx.fillRect(30, 395, 240, 32);
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(280, 395, 380, 32);
+      ctx.fillStyle = '#2563eb';
+      ctx.fillRect(670, 395, 320, 32);
+
+      // Audio wave tracks
+      ctx.fillStyle = '#059669';
+      ctx.fillRect(30, 435, 460, 28);
+      ctx.fillRect(500, 435, 490, 28);
+
+      // Playhead needle
+      const playheadX = (Date.now() * 0.12) % 960 + 30;
+      ctx.strokeStyle = '#ef4444';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(playheadX, 380);
+      ctx.lineTo(playheadX, 555);
+      ctx.stroke();
+      ctx.fillStyle = '#ef4444';
+      ctx.beginPath();
+      ctx.moveTo(playheadX-6, 380);
+      ctx.lineTo(playheadX+6, 380);
+      ctx.lineTo(playheadX, 390);
+      ctx.fill();
+    }
+
+    const screenTexture = new THREE.CanvasTexture(canvas);
+    const liveScreenMaterial = new THREE.MeshBasicMaterial({ map: screenTexture });
+
+    // 1. MONITOR SCREEN (Apple Studio Display style)
+    const monitorBezelGeo = new THREE.BoxGeometry(2.4, 1.45, 0.05);
+    const monitorBezel = new THREE.Mesh(monitorBezelGeo, darkMetalMaterial);
+    monitorBezel.position.set(0, 0.45, 0);
+    pcGroup.add(monitorBezel);
+
+    const monitorScreenGeo = new THREE.PlaneGeometry(2.32, 1.36);
+    const monitorScreen = new THREE.Mesh(monitorScreenGeo, liveScreenMaterial);
+    monitorScreen.position.set(0, 0.45, 0.027);
+    pcGroup.add(monitorScreen);
+
+    const standArmGeo = new THREE.BoxGeometry(0.24, 0.85, 0.04);
+    const standArm = new THREE.Mesh(standArmGeo, silverAluminumMaterial);
+    standArm.position.set(0, 0.05, -0.15);
+    standArm.rotation.x = 0.15;
+    pcGroup.add(standArm);
+
+    const standBaseGeo = new THREE.BoxGeometry(0.55, 0.02, 0.48);
+    const standBase = new THREE.Mesh(standBaseGeo, silverAluminumMaterial);
+    standBase.position.set(0, -0.36, 0.05);
+    pcGroup.add(standBase);
+
+    // 2. PRO DESKTOP PC TOWER (Mac Pro / High-End Studio Workstation)
+    const towerGroup = new THREE.Group();
+    towerGroup.position.set(1.7, 0.1, -0.2);
+    pcGroup.add(towerGroup);
+
+    const towerChassisGeo = new THREE.BoxGeometry(0.65, 1.15, 1.1);
+    const towerChassis = new THREE.Mesh(towerChassisGeo, silverAluminumMaterial);
+    towerGroup.add(towerChassis);
+
+    const sideGlassGeo = new THREE.BoxGeometry(0.02, 1.05, 0.98);
+    const sideGlassMat = new THREE.MeshPhysicalMaterial({
+      color: 0x0a1128,
+      metalness: 0.1,
+      roughness: 0.05,
+      transparent: true,
+      opacity: 0.65,
+      transmission: 0.6
+    });
+    const sideGlass = new THREE.Mesh(sideGlassGeo, sideGlassMat);
+    sideGlass.position.set(-0.33, 0, 0);
+    towerGroup.add(sideGlass);
+
+    const gpuBlockGeo = new THREE.BoxGeometry(0.25, 0.35, 0.65);
+    const gpuMat = new THREE.MeshStandardMaterial({ color: 0x222228, metalness: 0.9, roughness: 0.3 });
+    const gpuBlock = new THREE.Mesh(gpuBlockGeo, gpuMat);
+    gpuBlock.position.set(-0.05, -0.1, 0);
+    towerGroup.add(gpuBlock);
+
+    const ledLightGeo = new THREE.BoxGeometry(0.04, 0.04, 0.58);
+    const ledGlowMat = new THREE.MeshBasicMaterial({ color: 0x2997ff });
+    const ledLightStrip = new THREE.Mesh(ledLightGeo, ledGlowMat);
+    ledLightStrip.position.set(-0.2, -0.05, 0);
+    towerGroup.add(ledLightStrip);
+
+    const frontPlateGeo = new THREE.BoxGeometry(0.62, 1.12, 0.02);
+    const frontPlateMat = new THREE.MeshStandardMaterial({ color: 0x15161b, metalness: 0.7, roughness: 0.4 });
+    const frontPlate = new THREE.Mesh(frontPlateGeo, frontPlateMat);
+    frontPlate.position.set(0, 0, 0.56);
+    towerGroup.add(frontPlate);
+
+    // 3. KEYBOARD & MAGIC TRACKPAD
+    const keyboardGeo = new THREE.BoxGeometry(0.9, 0.025, 0.32);
+    const keyboard = new THREE.Mesh(keyboardGeo, silverAluminumMaterial);
+    keyboard.position.set(-0.2, -0.37, 0.55);
+    keyboard.rotation.x = 0.06;
+    pcGroup.add(keyboard);
+
+    const keybedGeo = new THREE.BoxGeometry(0.86, 0.015, 0.28);
+    const keybedMat = new THREE.MeshStandardMaterial({ color: 0x181920, roughness: 0.4 });
+    const keybed = new THREE.Mesh(keybedGeo, keybedMat);
+    keybed.position.set(-0.2, -0.355, 0.55);
+    keybed.rotation.x = 0.06;
+    pcGroup.add(keybed);
+
+    // Mouse / Colorist Trackball
+    const mouseGeo = new THREE.BoxGeometry(0.18, 0.05, 0.28);
+    const mouseMat = new THREE.MeshStandardMaterial({ color: 0x1c1d24, metalness: 0.4, roughness: 0.2 });
+    const mouse = new THREE.Mesh(mouseGeo, mouseMat);
+    mouse.position.set(0.48, -0.36, 0.55);
+    pcGroup.add(mouse);
+
+    const ringGeo = new THREE.RingGeometry(0.03, 0.045, 32);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x2997ff, side: THREE.DoubleSide });
+    const mouseRing = new THREE.Mesh(ringGeo, ringMat);
+    mouseRing.position.set(0.48, -0.334, 0.52);
+    mouseRing.rotation.x = -Math.PI / 2;
+    pcGroup.add(mouseRing);
+
+    // 4. STUDIO MONITORS / SPEAKERS
+    function createSpeaker(xPos) {
+      const spkGroup = new THREE.Group();
+      spkGroup.position.set(xPos, 0.3, -0.05);
+      const bodyGeo = new THREE.BoxGeometry(0.35, 0.65, 0.38);
+      const spkBody = new THREE.Mesh(bodyGeo, darkMetalMaterial);
+      spkGroup.add(spkBody);
+
+      const coneGeo = new THREE.CylinderGeometry(0.1, 0.04, 0.05, 32);
+      coneGeo.rotateX(Math.PI/2);
+      const coneMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.3 });
+      const cone = new THREE.Mesh(coneGeo, coneMat);
+      cone.position.set(0, -0.08, 0.18);
+      spkGroup.add(cone);
+
+      const tweeterGeo = new THREE.SphereGeometry(0.04, 16, 16);
+      const tweetMat = new THREE.MeshStandardMaterial({ color: 0x2997ff, metalness: 0.8 });
+      const tweeter = new THREE.Mesh(tweeterGeo, tweetMat);
+      tweeter.position.set(0, 0.16, 0.18);
+      spkGroup.add(tweeter);
+      return spkGroup;
+    }
+    pcGroup.add(createSpeaker(-1.6));
+    pcGroup.add(createSpeaker(1.15));
+
+    // Desk Surface
+    const deskGeo = new THREE.BoxGeometry(4.4, 0.06, 2.0);
+    const deskMat = new THREE.MeshStandardMaterial({ color: 0x111115, roughness: 0.4, metalness: 0.3 });
+    const desk = new THREE.Mesh(deskGeo, deskMat);
+    desk.position.set(0, -0.4, 0.2);
+    pcGroup.add(desk);
+
+    // Mouse and movement interaction
+    let targetRotY = 0;
+    let targetRotX = 0;
+    let isDragging = false;
+    let prevMouseX = 0;
+    let prevMouseY = 0;
+
+    const viewport = document.getElementById('pc-3d-container') || sceneHolder;
+
+    viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    viewport.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.clientX - prevMouseX;
+        const deltaY = e.clientY - prevMouseY;
+        targetRotY += deltaX * 0.006;
+        targetRotX += deltaY * 0.004;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+      } else {
+        const rect = viewport.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width * 2 - 1;
+        const y = -((e.clientY - rect.top) / rect.height * 2 - 1);
+        targetRotY = x * 0.4;
+        targetRotX = -y * 0.18;
+      }
+    });
+
+    // Touch support for mobile devices
+    viewport.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        const rect = viewport.getBoundingClientRect();
+        const x = (e.touches[0].clientX - rect.left) / rect.width * 2 - 1;
+        const y = -((e.touches[0].clientY - rect.top) / rect.height * 2 - 1);
+        targetRotY = x * 0.45;
+        targetRotX = -y * 0.2;
+      }
+    }, { passive: true });
+
+    function onResize() {
+      const newW = sceneHolder.clientWidth;
+      const newH = sceneHolder.clientHeight || 520;
+      camera.aspect = newW / newH;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newW, newH);
+    }
+    window.addEventListener('resize', onResize);
+
+    // Animation Loop
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsed = clock.getElapsedTime();
+
+      // Smooth rotation easing
+      pcGroup.rotation.y += (targetRotY - pcGroup.rotation.y) * 0.06;
+      pcGroup.rotation.x += (targetRotX - pcGroup.rotation.x) * 0.06;
+
+      // Gentle ambient floating
+      pcGroup.position.y = Math.sin(elapsed * 1.4) * 0.025;
+
+      // Animate DaVinci monitor canvas
+      updateScreenTexture();
+      screenTexture.needsUpdate = true;
+
+      // Pulse internal tower LED
+      ledLightStrip.material.color.setHSL(0.58, 0.9, 0.5 + Math.sin(elapsed * 3) * 0.15);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  });
+</script>
+</body></html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prince // Colorist — DaVinci Resolve Specialist</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#002e57",
+            "on-tertiary-container": "#2c2e2f",
+            "on-primary-fixed-variant": "#004882",
+            "primary-fixed": "#d3e3ff",
+            "primary-fixed-dim": "#a3c9ff",
+            "on-primary": "#00315c",
+            "surface-container-lowest": "#0e0e11",
+            "tertiary-fixed-dim": "#c6c6c8",
+            "surface-dim": "#131316",
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#1a1c1d",
+            "on-tertiary-fixed-variant": "#454749",
+            "on-secondary-fixed": "#07006c",
+            "on-surface-variant": "#c0c7d5",
+            "background": "#131316",
+            "tertiary-container": "#949597",
+            "surface": "#131316",
+            "on-secondary": "#1000a9",
+            "tertiary-fixed": "#e2e2e4",
+            "inverse-on-surface": "#313033",
+            "on-tertiary": "#2f3132",
+            "surface-container-high": "#2a2a2d",
+            "surface-container-low": "#1c1b1e",
+            "on-error": "#690005",
+            "primary-container": "#2997ff",
+            "on-primary-fixed": "#001c39",
+            "outline-variant": "#404753",
+            "secondary-fixed": "#e1e0ff",
+            "secondary-fixed-dim": "#c0c1ff",
+            "inverse-surface": "#e5e1e5",
+            "surface-bright": "#39393c",
+            "tertiary": "#c6c6c8",
+            "outline": "#8a919e",
+            "surface-container": "#201f22",
+            "error": "#ffb4ab",
+            "surface-container-highest": "#353438",
+            "secondary": "#c0c1ff",
+            "on-error-container": "#ffdad6",
+            "on-background": "#e5e1e5",
+            "primary": "#a3c9ff",
+            "on-secondary-container": "#b0b2ff",
+            "secondary-container": "#3131c0",
+            "inverse-primary": "#0060aa",
+            "surface-tint": "#a3c9ff",
+            "on-surface": "#e5e1e5",
+            "surface-variant": "#353438",
+            "on-secondary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-5xl": "9rem",
+            "space-xs": "0.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.75rem",
+            "container-max": "1360px",
+            "space-2xs": "0.25rem",
+            "gutter-desktop": "2rem",
+            "gutter-mobile": "1rem",
+            "space-3xl": "4.5rem",
+            "space-2xl": "3rem",
+            "space-lg": "1.5rem",
+            "space-4xl": "6rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "body-xl": ["Inter"],
+            "headline-lg": ["Inter"],
+            "display-hero": ["Inter"],
+            "label-caps": ["Inter"],
+            "label-code": ["JetBrains Mono"],
+            "headline-xl-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-xl": ["Inter"],
+            "display-hero-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "body-xl": ["19px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+            "display-hero": ["80px", { "lineHeight": "84px", "letterSpacing": "-0.04em", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-xl": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "display-hero-mobile": ["44px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Cinematic Glass & Specular Edge */
+    .titanium-glass {
+      background: rgba(28, 29, 34, 0.65);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .cinema-radial {
+      background: radial-gradient(circle at 50% 0%, rgba(41, 151, 255, 0.12) 0%, rgba(5, 5, 7, 0) 70%);
+    }
+    .glow-blue {
+      box-shadow: 0 0 35px -5px rgba(41, 151, 255, 0.35);
+    }
+    .glow-node {
+      filter: drop-shadow(0 0 8px rgba(41, 151, 255, 0.5));
+    }
+  </style>
+</head>
+<body class="bg-[#050507] text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-x-hidden font-body-md text-body-md">
+<!-- Ambient Cinematic Gradients -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#2997ff] opacity-[0.07] blur-[160px] rounded-full"></div>
+<div class="absolute top-[40%] right-[-10%] w-[600px] h-[500px] bg-[#3131c0] opacity-[0.05] blur-[140px] rounded-full"></div>
+</div>
+<!-- Shared TopNavBar (Floating Pill) -->
+<header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 rounded-full w-[94%] max-w-container-max border border-outline-variant/30 dark:border-outline-variant/30 bg-surface-container/60 dark:bg-surface-container/60 backdrop-blur-xl shadow-2xl shadow-surface-container-lowest/80 transition-all duration-300 ease-out">
+<div class="flex items-center justify-between gap-6 px-6 py-3 max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_10px_#2997ff]"></span>
+<span class="text-label-caps font-label-caps font-semibold tracking-widest text-on-surface dark:text-on-surface uppercase group-hover:text-primary transition-colors duration-200">
+          Prince // Colorist
+        </span>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-7">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#about">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#capabilities">Capabilities</a>
+<a class="text-primary dark:text-primary font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#showcase">Showcase</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#reviews">Reviews</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-caps font-label-caps hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
+</nav>
+<!-- Trailing Action Badges -->
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-label-caps font-label-caps text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-[#34c759]"></span>
+<span>Freelance Ready</span>
+</div>
+<a class="px-5 py-2 rounded-full bg-primary-container text-[#050507] font-label-caps text-label-caps font-semibold hover:shadow-[0_0_20px_rgba(41,151,255,0.45)] hover:scale-105 active:scale-95 transition-all duration-200" href="#contact">
+          Hire Me
+        </a>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="relative z-10 pt-36 md:pt-44">
+<!-- HERO SECTION -->
+<section class="max-w-container-max mx-auto px-6 md:px-12 lg:px-16 text-center cinema-radial pb-20 md:pb-28">
+<!-- Eyebrow Pill -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-surface-container-low/70 border border-outline-variant/30 backdrop-blur-md mb-8">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">
+          DaVinci Resolve Specialist • Available for Q1/Q2 Projects
+        </span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-display-hero text-display-hero md:text-display-hero text-4xl leading-tight md:leading-[1.05] tracking-tight text-on-surface max-w-5xl mx-auto mb-6">
+        Crafting Cinematic Videos &amp; <span class="bg-gradient-to-r from-on-surface via-primary to-primary-container bg-clip-text text-transparent">Professional Color Grading.</span>
+</h1>
+<!-- Subheadline -->
+<p class="font-body-xl text-body-xl text-on-surface-variant max-w-2xl mx-auto mb-10">
+        Hi, I’m Prince — a driven 16-year-old freelance Video Editor &amp; Colorist. I cooperate closely with clients to transform vision into high-converting, polished videos that captivate audiences.
+      </p>
+<!-- Call to Actions -->
+<div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+<a class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-[#050507] font-headline-sm text-headline-sm font-semibold tracking-tight shadow-[0_0_28px_rgba(41,151,255,0.4)] hover:shadow-[0_0_36px_rgba(41,151,255,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all" href="#showcase">
+<span>Explore Work Showcase</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-surface-container-high/40 border border-outline-variant/40 hover:border-primary/40 backdrop-blur-xl text-on-surface font-headline-sm text-headline-sm hover:bg-surface-container-highest/50 active:scale-[0.98] transition-all" href="#contact">
+<span>Hire as Freelancer</span>
+</a>
+</div>
+<!-- Scopes / Node Graph Interactive Showcase Widget (DaVinci Suite Simulation) -->
+<div class="relative max-w-4xl mx-auto rounded-2xl titanium-glass p-6 md:p-8 shadow-2xl border border-outline-variant/30 text-left overflow-hidden">
+<!-- Window HUD Bar -->
+<div class="flex items-center justify-between pb-6 border-b border-outline-variant/20 mb-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-[#ff5f56]/80"></span>
+<span class="w-3 h-3 rounded-full bg-[#ffbd2e]/80"></span>
+<span class="w-3 h-3 rounded-full bg-[#27c93f]/80"></span>
+<span class="ml-4 font-label-code text-label-code text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="hub">hub</span>
+              DAVINCI RESOLVE COLOR PIPELINE // NODE SCOPES v19.1
+            </span>
+</div>
+<div class="hidden sm:flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded bg-surface-container-highest font-label-code text-label-code text-primary">Rec.709 Wide Gamut</span>
+<span class="px-2.5 py-0.5 rounded bg-surface-container-highest font-label-code text-label-code text-on-surface-variant">32-Bit Float</span>
+</div>
+</div>
+<!-- Node Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+<!-- Node 01 -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 hover:border-primary-container transition-all group">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary">NODE 01</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mb-1">Exposure &amp; Balance</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Black/White point calibration &amp; lift gamma gain leveling.</p>
+</div>
+<!-- Node 02 -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 hover:border-primary-container transition-all group">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary">NODE 02</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mb-1">CST / Camera Log</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Sony S-Log3 / Arri LogC to Davinci Wide Gamut Intermediate.</p>
+</div>
+<!-- Node 03 -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 hover:border-primary-container transition-all group">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary">NODE 03</span>
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mb-1">Skin Tone Isolate</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Precision 3D Qualifier qualifier + vector scope target line lock.</p>
+</div>
+<!-- Node 04 -->
+<div class="p-4 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 hover:border-primary-container transition-all group">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-code text-label-code text-primary">NODE 04</span>
+<span class="w-2 h-2 rounded-full bg-[#27c93f]"></span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mb-1">Filmic Print &amp; Grain</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Kodak 2383 emulation profile &amp; 35mm optical grain scatter.</p>
+</div>
+</div>
+<!-- Node Connector Vector Graphic Line (Decorative) -->
+<div class="mt-5 pt-4 border-t border-outline-variant/20 flex flex-wrap items-center justify-between font-label-code text-label-code text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="timeline">timeline</span>
+<span>TIMELINE COLOR SPACE: DAVINCI YRGB COLOR MANAGED</span>
+</div>
+<span class="text-primary-container">POWERED BY DAVINCI RESOLVE STUDIO</span>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-14 pt-8 border-t border-outline-variant/20 text-center">
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-semibold">100%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Client Reviews</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-primary font-semibold">80k+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Peak Viral Views</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-semibold">DaVinci</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">DaVinci Resolve Specialist</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-primary font-semibold">100%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase mt-1">Repeat Client Rate</div>
+</div>
+</div>
+</section>
+<!-- ABOUT THE EDITOR SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-outline-variant/20" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column: Biography -->
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            ABOUT THE EDITOR
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold leading-tight">
+            Driven by Passion.<br/><span class="text-primary">Focused on Quality.</span>
+</h2>
+<div class="flex items-center gap-4 pt-2">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center font-headline-lg text-headline-lg font-bold text-primary shadow-inner">
+              P
+            </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Prince</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">16-Year-Old Freelance Video Editor &amp; Master Colorist</p>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            I am a passionate video editor and colorist specializing in <strong class="text-on-surface font-semibold">DaVinci Resolve</strong> — the gold standard software for professional video editing and cinematic color grading.
+          </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Although I am young and starting fresh in the professional market, my dedication is unmatched. I strive to get better every single day, refining my cuts, color scopes, sound design, and visual pacing.
+          </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            I work exclusively as a <strong class="text-on-surface font-semibold">freelancer</strong>, giving me the flexibility to collaborate closely with local businesses, creators, and brands to deliver custom videos that suit their exact requirements.
+          </p>
+<!-- Pull Quote Card -->
+<div class="p-6 rounded-2xl titanium-glass border border-outline-variant/30 mt-6 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-9xl" data-icon="format_quote">format_quote</span>
+</div>
+<blockquote class="font-body-xl text-body-xl text-on-surface font-medium italic relative z-10">
+              “Less client volume, 100% satisfaction. Every single client I’ve worked with returned for repeat projects.”
+            </blockquote>
+</div>
+</div>
+<!-- Right Column: 4 Pro Pillars Bento -->
+<div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Pillar 1 -->
+<div class="p-6 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30 hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">DaVinci Resolve Mastery</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Expertise in industry-grade node-based color grading, LUT creation, and precision multi-track editing.</p>
+</div>
+<!-- Pillar 2 -->
+<div class="p-6 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30 hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Client Cooperation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">I listen carefully to your vision and adapt the editing style, music, and pacing to match your exact goals.</p>
+</div>
+<!-- Pillar 3 -->
+<div class="p-6 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30 hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Relentless Growth</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">As an ambitious 16-year-old editor, I push my technical boundaries daily to deliver fresh, modern visual content.</p>
+</div>
+<!-- Pillar 4 -->
+<div class="p-6 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30 hover:border-primary/50 transition-all group">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Proven Client Retention</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Worked with local businesses and creators who gave 100% top-notch reviews and returned for repeat projects.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CAPABILITIES & BENTO GRID SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-outline-variant/20" id="capabilities">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+          CAPABILITIES &amp; EXPERTISE
+        </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold mb-4">
+          Premium Video Editing &amp; Color Services
+        </h2>
+<p class="font-body-xl text-body-xl text-on-surface-variant">
+          Every cut, transition, and color grade is crafted with precision in DaVinci Resolve.
+        </p>
+</div>
+<!-- Bento Grid (4 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Bento Card 1: Color Grading -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">01</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/20">DaVinci Nodes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Professional Color Grading</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">DaVinci Resolve Scopes &amp; Primary/Secondary Nodes</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Transform flat camera footage into rich, vibrant cinematic aesthetics. Precision color correction, skin tone alignment, LUT mapping, and mood creation.
+            </p>
+</div>
+<!-- Color Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-outline-variant/20">
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Color Correction</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Cinematic Look</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Shot Matching</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">HDR &amp; Rec.709</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Skin Tone Tuning</span>
+</div>
+</div>
+<!-- Bento Card 2: Precision Cutting & Sound -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">02</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/20">Fairlight Suite</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Precision Cutting &amp; Sound Design</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">High-Impact Pacing &amp; Audio Engineering</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Smooth timeline editing with immaculate audio synchronization, sound design, voice enhancement, and seamless L/J cut transitions.
+            </p>
+</div>
+<!-- Audio & Editing Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-outline-variant/20">
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Multi-Cam Cut</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Pacing &amp; Rhythm</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Audio Mastering</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Beat Sync</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Sound FX Design</span>
+</div>
+</div>
+<!-- Bento Card 3: Motion Graphics & Text FX -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">03</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/20">Fusion FX</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Motion Graphics &amp; Text FX</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">Rise &amp; Upward Word-by-Word Text Animations</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Custom animated title cards, kinetic typography, rise and slide word reveals, lower thirds, callout badges, and logo stings.
+            </p>
+</div>
+<!-- Motion Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-outline-variant/20">
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Kinetic Typography</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Title Animations</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Word-by-Word Rise</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Lower Thirds</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Logo Stings</span>
+</div>
+</div>
+<!-- Bento Card 4: Client Cooperation -->
+<div class="rounded-3xl titanium-glass p-8 md:p-10 border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-label-code text-label-code text-primary font-semibold text-base">04</span>
+<span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary font-label-code text-label-code border border-primary/20">Dedicated 1-on-1</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mb-2">Client Cooperation &amp; Adaptability</h3>
+<p class="font-label-sm text-label-sm text-primary mb-4">Custom Tailored to Business Needs</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+              Direct 1-on-1 collaboration. I listen to your target audience, adjust video style accordingly, and ensure prompt revisions until 100% satisfied.
+            </p>
+</div>
+<!-- Cooperation Tags -->
+<div class="flex flex-wrap gap-2 pt-4 border-t border-outline-variant/20">
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Requirement Analysis</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Local Business Videos</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">Fast Turnaround</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">100% Satisfaction</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant">1-on-1 Support</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PORTFOLIO SHOWCASE SECTION (Apple Keynote Gallery) -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-outline-variant/20" id="showcase">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            PORTFOLIO SHOWCASE
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">Crafted for Visual Impact.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+            Categorized video projects across Motion Graphics, Promotional Editing, and Travel/Education.
+          </p>
+</div>
+<!-- Filter Pills -->
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-[#050507] font-label-code text-label-code font-semibold shadow-sm">All Projects</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high/40 hover:bg-surface-container-high border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant transition-colors">Motion Graphics</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high/40 hover:bg-surface-container-high border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant transition-colors">Promotional Editing</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high/40 hover:bg-surface-container-high border border-outline-variant/30 font-label-code text-label-code text-on-surface-variant transition-colors">Travel &amp; Education</button>
+</div>
+</div>
+<!-- Project Cards Grid (16:9 Cinematic Ratios) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1: Truth of Life -->
+<article class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden hover:border-primary-container/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cinematic motion graphics still frame with glowing neon typography, abstract geometrical vector elements, and deep shadow isolation. Dark moody film aesthetic rendered with high dynamic range and subtle cyan and tungsten lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrr2AzoLniMODj3cJO5MYcEUTHLCNX1R_mXzj4arIomEhfL-pkJGSL9oj7i5QxiNktGx3ErY1sy5AqxyWh5DybUJBmFqLeKCkT-dTQeQgb7Ovh9L4flhq1SAXr1RT-1K4LHbCoBlvYDfywZf_3M0uYO7rGoqZ3CEDa9wfcYeB3qFHesxJ7fdKbiO_RQeSeL6wByc8wfQr4kYwkXHiF5m_tipgSg404JWkGMlgNPpvt_b5VRdyWlJ2gwQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-primary border border-outline-variant/30">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-outline-variant/30">Motion Graphics</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+              Truth of Life — Motion Graphics Edit
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+              A visually engaging motion graphics piece blending kinetic typography, animated transitions, and cinematic visual storytelling — entirely crafted in DaVinci Resolve.
+            </p>
+<div class="flex items-center gap-2 pt-3 border-t border-outline-variant/20 font-label-code text-label-code text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Fusion FX</span>
+</div>
+</div>
+</article>
+<!-- Project 2: A.R. Construction -->
+<article class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden hover:border-primary-container/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end industrial architecture construction site shot at dusk with dramatic lighting, steel beams, and warm tungsten work lights contrasting deep blue hour skies, graded with rich cinematic tonal curve and balanced shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz5khYgOTljcOXwaJknn9CqUM3ZaP7vtbvN5gDfhPDSGiSOyC2UkKvHuZD1TeJQZJkadwsN2fit9k4qb5Drnc6OygopXd_pWgTuJR--5hnTczRHIRsSCICTDCGWsd2Kfw_t-bWa1Al-XXui1-kjvrKE52IK0AGbL8xA05AbZtWPTRNLHhMieDViBXobtKcKbrgGF3uE6MIVk-Jy4Cv-BEMd3X6Ewgm7gsTlmWLY7lydmq7XFU8H1Y-ZQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-primary border border-outline-variant/30">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-outline-variant/30">Promotional Editing</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+              A.R. Construction — Promotional Edit
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+              High-impact promotional video crafted for A.R. Construction, Jhansi. Precision-cut footage with punchy transitions, bold text callouts, and professional color grading.
+            </p>
+<div class="flex items-center gap-2 pt-3 border-t border-outline-variant/20 font-label-code text-label-code text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</div>
+</article>
+<!-- Project 3: Hotel Ramvan -->
+<article class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden hover:border-primary-container/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxurious boutique hotel interior with soft warm architectural ambient lighting, pristine marble reflection, elegant dining presentation, and deep rich blacks color graded with an Apple Pro cinematic look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9JPrlgqe44POr6NjqdDqC-wGbIDFuNVDiz-lgLFEqV0DF2MDS-VTEsrz53ZCtmSiyde3qJFPJ4tazZcVjM97EGeoylt4WFvUlTdAnqHqoZPDmB1-n6GTWmVAJ6kPFEaw45vol8ixLgacl0Ex0MW6T9ahBbMdvQn_3z58l8ifbFiZnoKOs41935vaTE4sCyM4tz7Qi4Hj-RymTQs-qUpO7w-L4uPp5XQQDpvX4OxzcCeSMujUYzeJzeg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-primary border border-outline-variant/30">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-outline-variant/30">Promotional Editing</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-primary-container text-[#050507] font-label-code text-label-code font-bold">
+              30k+ Views
+            </div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+              Ramvan Hotel — Promotional Edit
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+              Commercial promotional edit for Hotel Ramvan, Jhansi. Designed to attract customers with a strong opening hook, elegant visuals, and polished color grade.
+            </p>
+<div class="flex items-center gap-2 pt-3 border-t border-outline-variant/20 font-label-code text-label-code text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</div>
+</article>
+<!-- Project 4: Dubey Resort -->
+<article class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden hover:border-primary-container/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+<div class="relative aspect-video bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Breathtaking luxury vacation resort with illuminated swimming pools under twilight, palm trees silhouetted against glowing sapphire skies, graded with vibrant teal and orange saturation curves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXVRBZgMK4V_gRTfj8A_jI2irL1lZYIZgG-LjNJxX-wwtsU0XQKOnpTxDBnKKcaU3Ut2r3DYyKsI81xxNe1luz3zfkMGM14sDn5BPtGzzTcGHtIxqfKMHvP9YvBoVBSDBKvPhiBK9lIZyDGmvOsVBPUCB5E90pUqrZI0tsT-zDBUeObEaImbtBtkd3lAL5NwC1YuRxTqVno1jYbjTSCRCMI9eYAEcHX4yyEnJPzgaMGQWXxQL0-uhpUw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-primary border border-outline-variant/30">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-outline-variant/30">Promotional Editing</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-primary text-[#050507] font-label-code text-label-code font-bold">
+              80k Peak Views
+            </div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+              Dubey Resort — Promotional Edit
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+              Cinematic promotional edit for Dubey Resort, highlighting the venue and amenities with engaging transitions, dynamic motion graphics, and a professional color grade.
+            </p>
+<div class="flex items-center gap-2 pt-3 border-t border-outline-variant/20 font-label-code text-label-code text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</div>
+</article>
+<!-- Project 5: Bhojpur Temple -->
+<article class="group rounded-2xl bg-surface-container-low border border-outline-variant/30 overflow-hidden hover:border-primary-container/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 lg:col-span-2">
+<div class="relative aspect-video lg:aspect-[21/9] bg-[#0c0d11] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Ancient monumental stone temple of Bhojpur with grand architectural pillars, warm sunrise light piercing through ancient stone arches, mist, and deep golden color temperature balanced against dark stone textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2swgn83I1DKMCjPzm8zXUEgHq2ePAG91wXAwFP0hAW7xt5XtUIxn798sWXDu6Tn_cxxkakf1OY57BoiXUWjbFPwOz8O3x-JSALmveM1t5gZ8VZuVI1HYewR4XiFwgFsCiD8J6g9sfMefTU7agt5LVh0agb38j6NuqzICFhepmQuDcsDjAKtbeKh2ZDPXdc9OQLvA0mjCSPF4-vjMubMhZ37Ry3WieHrRaV4y0Tf4bfDA9E_-ckQTTaQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-primary border border-outline-variant/30">Color Graded</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-on-surface-variant border border-outline-variant/30">Travel &amp; Education</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors">
+              Bhojpur Temple — Travel &amp; Education
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-4">
+              A cinematic travel and educational piece covering the magnificent Bhojpur Temple. Smooth transitions, warm color grading, and atmospheric sound design bring the ancient architecture to life.
+            </p>
+<div class="flex items-center gap-2 pt-3 border-t border-outline-variant/20 font-label-code text-label-code text-on-surface-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="circle">circle</span>
+<span>DaVinci Resolve</span>
+<span class="text-outline-variant">•</span>
+<span>Color Grading</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- CLIENT REVIEWS & RETENTION SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-outline-variant/20" id="reviews">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+          CLIENT REVIEWS &amp; RETENTION
+        </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold mb-4">
+          Top-Notch Reviews. 100% Returning Clients.
+        </h2>
+<p class="font-body-xl text-body-xl text-on-surface-variant">
+          I prioritize quality over client volume. Every client I work with receives dedicated 1-on-1 cooperation and cinematic excellence.
+        </p>
+</div>
+<!-- Reviews Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1: Dubai/Dubey Resort -->
+<div class="p-8 rounded-3xl titanium-glass border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “The experience of working with you was awesome. You shot, edited, and managed the whole project nicely. We got around 80k views on that video and thousands of profit on our tickets due to the marketing.”
+            </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dubai Resort</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">Dubai Resort, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest font-label-code text-label-code text-primary border border-outline-variant/30">
+              Repeat Client
+            </span>
+</div>
+</div>
+<!-- Review 2: AR Construction -->
+<div class="p-8 rounded-3xl titanium-glass border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “Your editing was awesome and you completed the project on time. Had a great experience with you. I will surely contact you for future projects.”
+            </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">AR Construction</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">AR Construction, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest font-label-code text-label-code text-primary border border-outline-variant/30">
+              Repeat Client
+            </span>
+</div>
+</div>
+<!-- Review 3: Hotel Ramvan -->
+<div class="p-8 rounded-3xl titanium-glass border border-outline-variant/30 flex flex-col justify-between hover:border-primary/40 transition-all">
+<div>
+<div class="flex items-center gap-1 text-[#ffbd2e] mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface italic leading-relaxed mb-8">
+              “You managed the project very efficiently and also helped us by taking revisions and making the type we wanted. You created a decent hook and our video got 30k+ views with more customers coming.”
+            </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Hotel Ramvan</h4>
+<p class="font-label-code text-label-code text-on-surface-variant">Hotel Ramvan, Jhansi</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-highest font-label-code text-label-code text-primary border border-outline-variant/30">
+              Repeat Client
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT / HIRE SECTION -->
+<section class="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-outline-variant/20" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Details & Direct Channels -->
+<div class="lg:col-span-5 space-y-6">
+<div class="inline-flex items-center gap-2 font-label-code text-label-code text-primary uppercase">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            START A FREELANCE PROJECT
+          </div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-semibold">
+            Let's Build Your Next Viral Video.
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+            Have a promotional edit, motion graphics package, or travel video project in mind? Fill out the form or reach out directly to discuss your project requirements.
+          </p>
+<div class="space-y-4 pt-4">
+<!-- Email -->
+<a class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-4 hover:border-primary/50 transition-all block group" href="mailto:princeahirwar.8127@gmail.com">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Direct Email Inquiry</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">princeahirwar.8127@gmail.com</div>
+</div>
+</a>
+<!-- Instagram 1 -->
+<a class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-4 hover:border-primary/50 transition-all block group" href="https://www.instagram.com/prince_editz_308/" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Instagram</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">@prince_editz_308</div>
+</div>
+</a>
+<!-- Instagram 2 -->
+<a class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-4 hover:border-primary/50 transition-all block group" href="https://www.instagram.com/mahak_unfiltered122/" rel="noopener noreferrer" target="_blank">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">See My Works</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium group-hover:text-primary transition-colors">@mahak_unfiltered122</div>
+</div>
+</a>
+<!-- Freelance Availability -->
+<div class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest flex items-center justify-center text-[#34c759]">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-on-surface-variant uppercase">Freelance Availability</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-medium">Project-Based &amp; Contract Freelancing</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Inquiry Terminal Form -->
+<div class="lg:col-span-7">
+<form class="p-8 md:p-10 rounded-3xl titanium-glass border border-outline-variant/30 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Your Name</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Your Email</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Project Category</label>
+<select class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+<option>Promotional Video / Business Commercial</option>
+<option>Motion Graphics &amp; Kinetic Text</option>
+<option>Travel Vlog or Educational Content</option>
+<option>Dedicated Color Grading (Rec.709)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-code text-label-code text-on-surface-variant uppercase mb-2">Project Requirements &amp; Details</label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-on-surface placeholder:text-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Tell me about your video footage, target platform, desired turnaround, and reference links..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 rounded-xl bg-primary-container text-[#050507] font-headline-sm text-headline-sm font-semibold hover:shadow-[0_0_24px_rgba(41,151,255,0.4)] active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="button">
+<span>Send Freelance Project Request</span>
+<span class="material-symbols-outlined text-lg" data-icon="send">send</span>
+</button>
+<div class="text-center font-label-code text-label-code text-on-surface-variant">
+              Guaranteed response within 24 hours. Confidentiality respected.
+            </div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Footer (Minimal Editorial) -->
+<footer class="docked full-width bottom border-t border-outline-variant/20 dark:border-outline-variant/20 bg-surface-container-lowest dark:bg-surface-container-lowest flat no shadows transition-colors duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-container-max mx-auto gap-6">
+<!-- Brand / Identity -->
+<div class="flex flex-col items-center md:items-start">
+<span class="text-headline-sm font-headline-sm font-medium text-on-surface dark:text-on-surface tracking-tight">
+          PRINCE.
+        </span>
+<span class="text-body-md font-body-md text-on-surface-variant dark:text-on-surface-variant mt-1">
+          DaVinci Resolve Specialist &amp; Master Colorist
+        </span>
+</div>
+<!-- Footer Navigation Links from JSON -->
+<div class="flex flex-wrap justify-center items-center gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#showcase">
+          Showreel Breakdown
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#capabilities">
+          Node Presets
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#capabilities">
+          LUT Catalog
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#about">
+          Workstation Specs
+        </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-code font-label-code hover:text-primary dark:hover:text-primary transition-colors duration-150" href="#contact">
+          Terms &amp; Calibrations
+        </a>
+</div>
+<!-- Copyright Text Exact String -->
+<div class="text-body-md font-body-md text-on-surface-variant dark:text-on-surface-variant text-center md:text-right">
+        © 2025 Prince. DaVinci Resolve Specialist &amp; Master Colorist. All rights reserved.
+      </div>
+</div>
+</footer>
+</body></html>

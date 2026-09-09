@@ -22,6 +22,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-website-three-gamma-95.vercel.app'),
   title: 'Prince | Professional Video Editor & Colorist (DaVinci Resolve)',
   description:
     'Portfolio of Prince, a passionate 16-year-old freelance Video Editor & Colorist specializing in DaVinci Resolve, Motion Graphics, Promotional Videos, and Color Grading.',
@@ -34,11 +35,20 @@ export const metadata: Metadata = {
     'Color Grading Specialist',
   ],
   authors: [{ name: 'Prince' }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: 'Prince | Professional Video Editor & Colorist',
     description:
       'High-impact video editing, professional color grading, and motion graphics powered by DaVinci Resolve.',
     type: 'website',
+    url: 'https://portfolio-website-three-gamma-95.vercel.app',
   },
 };
 
