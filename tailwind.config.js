@@ -5,12 +5,28 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: '#07070c',
-        surface: '#0f0f18',
-        'surface-light': '#181826',
+        background: '#050507',
+        surface: '#131316',
+        primary: '#a3c9ff',
+        'primary-container': '#2997ff',
+        'on-primary': '#00315c',
+        'on-primary-container': '#002e57',
+        'on-surface': '#e5e1e5',
+        'on-surface-variant': '#c0c7d5',
+        'surface-dim': '#131316',
+        'surface-bright': '#39393c',
+        'surface-container-lowest': '#0e0e11',
+        'surface-container-low': '#1c1b1e',
+        'surface-container': '#201f22',
+        'surface-container-high': '#2a2a2d',
+        'surface-container-highest': '#353438',
+        'outline-variant': '#404753',
+        secondary: '#c0c1ff',
+        'secondary-container': '#3131c0',
         accent: {
           cyan: '#00f2fe',
           violet: '#7928ca',
@@ -21,32 +37,15 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        display: ['var(--font-syne)', 'sans-serif'],
-        mono: ['var(--font-space-mono)', 'monospace'],
+        mono: ['var(--font-jetbrains)', 'var(--font-space-mono)', 'monospace'],
+        display: ['var(--font-inter)', 'sans-serif'],
+      },
+      maxWidth: {
+        'container-max': '1360px',
       },
       animation: {
         'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
         'float-slow': 'floatSlow 6s ease-in-out infinite',
-        'spin-slow': 'spin 12s linear infinite',
-        'border-beam': 'borderBeam 6s linear infinite',
-      },
-      keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(0,242,254,0.4))' },
-          '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 25px rgba(121,40,202,0.6))' },
-        },
-        floatSlow: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-12px)' },
-        },
-        borderBeam: {
-          '100%': { offsetDistance: '100%' },
-        },
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'davinci-gradient': 'linear-gradient(135deg, #00f2fe 0%, #4facfe 30%, #7928ca 70%, #ff0080 100%)',
       },
     },
   },

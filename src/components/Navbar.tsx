@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Video, Film, Sparkles, Send, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,117 +14,121 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Capabilities', href: '#capabilities' },
-    { name: 'Showcase', href: '#showcase' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3 bg-[#07070c]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl' : 'py-5 bg-transparent'
+    <header
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 rounded-full w-[94%] max-w-container-max border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_15px_35px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out ${
+        scrolled ? 'bg-[#050507]/80 shadow-[0_20px_40px_rgba(0,0,0,0.8)]' : ''
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="flex items-center justify-between gap-6 px-6 py-3 max-w-container-max mx-auto">
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-cyan via-accent-violet to-accent-pink p-[1.5px] group-hover:scale-105 transition-transform duration-300">
-            <div className="w-full h-full bg-[#07070c] rounded-[10px] flex items-center justify-center">
-              <Film className="w-5 h-5 text-accent-cyan group-hover:text-white transition-colors" />
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-extrabold text-xl tracking-wider text-white group-hover:text-accent-cyan transition-colors">
-              PRINCE<span className="text-accent-cyan">.</span>
-            </span>
-            <span className="font-mono text-[10px] text-gray-400 tracking-widest uppercase">
-              DaVinci Resolve Editor
-            </span>
-          </div>
+        <a className="flex items-center gap-3 group" href="#">
+          <span className="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_12px_#2997ff]"></span>
+          <span className="text-[11px] font-mono font-semibold tracking-widest text-[#e5e1e5] uppercase group-hover:text-primary transition-colors duration-200">
+            Prince // Colorist
+          </span>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-surface/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-full transition-all duration-200"
-            >
-              {link.name}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-7">
+          <a
+            className="text-on-surface-variant font-medium text-[11px] font-mono tracking-wider uppercase hover:text-primary transition-colors duration-200"
+            href="#about"
+          >
+            About
+          </a>
+          <a
+            className="text-on-surface-variant font-medium text-[11px] font-mono tracking-wider uppercase hover:text-primary transition-colors duration-200"
+            href="#capabilities"
+          >
+            Capabilities
+          </a>
+          <a
+            className="text-primary font-medium text-[11px] font-mono tracking-wider uppercase hover:text-primary transition-colors duration-200"
+            href="#showcase"
+          >
+            Showcase
+          </a>
+          <a
+            className="text-on-surface-variant font-medium text-[11px] font-mono tracking-wider uppercase hover:text-primary transition-colors duration-200"
+            href="#reviews"
+          >
+            Reviews
+          </a>
+          <a
+            className="text-on-surface-variant font-medium text-[11px] font-mono tracking-wider uppercase hover:text-primary transition-colors duration-200"
+            href="#contact"
+          >
+            Contact
+          </a>
         </nav>
 
-        {/* Availability Badge & CTA Button */}
-        <div className="hidden sm:flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-pill text-xs font-mono text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        {/* Trailing Action Badges */}
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#34c759] shadow-[0_0_8px_#34c759]"></span>
             <span>Freelance Ready</span>
           </div>
           <a
+            className="px-5 py-2 rounded-full bg-primary-container text-[#050507] font-mono text-[11px] font-semibold hover:shadow-[0_0_24px_rgba(41,151,255,0.55)] hover:scale-105 active:scale-95 transition-all duration-200"
             href="#contact"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-accent-cyan to-accent-violet text-white font-semibold text-sm hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:scale-105 transition-all duration-300"
           >
-            <Send className="w-4 h-4" />
-            <span>Hire Me</span>
+            Hire Me
           </a>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg bg-surface border border-white/10 text-gray-300 hover:text-white"
-          aria-label="Toggle Navigation Menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-1.5 text-on-surface-variant hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+          >
+            <span className="material-symbols-outlined text-xl">
+              {mobileMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-[#0a0a14]/95 backdrop-blur-2xl border-b border-white/10 overflow-hidden"
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="md:hidden px-6 pt-2 pb-6 border-t border-white/10 flex flex-col gap-3">
+          <a
+            className="text-sm font-mono text-on-surface-variant hover:text-primary py-2"
+            href="#about"
+            onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium text-gray-200 hover:text-accent-cyan transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                  <span>Available for Freelance Projects</span>
-                </div>
-                <a
-                  href="#contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-accent-cyan to-accent-violet text-white font-bold"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Hire Prince</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+            About
+          </a>
+          <a
+            className="text-sm font-mono text-on-surface-variant hover:text-primary py-2"
+            href="#capabilities"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Capabilities
+          </a>
+          <a
+            className="text-sm font-mono text-primary py-2"
+            href="#showcase"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Showcase
+          </a>
+          <a
+            className="text-sm font-mono text-on-surface-variant hover:text-primary py-2"
+            href="#reviews"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Reviews
+          </a>
+          <a
+            className="text-sm font-mono text-on-surface-variant hover:text-primary py-2"
+            href="#contact"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contact
+          </a>
+        </div>
+      )}
+    </header>
   );
 }

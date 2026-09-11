@@ -5,6 +5,7 @@ export interface VideoProject {
   categoryLabel: string;
   videoUrl?: string; // Local MP4/MOV file path in /public (fallback)
   youtubeId?: string; // YouTube video ID for embed
+  thumbnailOverride?: string; // Custom thumbnail path (overrides YouTube auto-thumb)
   description: string;
   softwareUsed: string[];
   clientType: string;
@@ -13,6 +14,18 @@ export interface VideoProject {
 
 export const sampleVideos: VideoProject[] = [
   // ── Motion Graphics ──
+  {
+    id: 'mg-2',
+    title: 'Motion Essentials — SaaS Product Animation',
+    category: 'motion-graphics',
+    categoryLabel: 'Motion Graphics',
+    youtubeId: '79sDEluaNKY',
+    thumbnailOverride: '/images/motion-essentials-thumb.jpg',
+    description: 'A sleek SaaS-style motion graphics animation showcasing fluid UI transitions, kinetic typography, and modern product design language — crafted to elevate digital product storytelling.',
+    softwareUsed: ['DaVinci Resolve', 'Fusion FX', 'Motion Design'],
+    clientType: 'SaaS Product Demo',
+    colorGraded: false,
+  },
   {
     id: 'mg-1',
     title: 'Truth of Life — Motion Graphics Edit',

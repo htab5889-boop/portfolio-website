@@ -22,12 +22,13 @@
 <div id="threejs-container-ANIMATION_5" style="width:100%;height:100%"></div>
 <script>
 (function() {
-  const container = document.getElementById('threejs-container-ANIMATION_5');
-  const devicePixelRatio = window.devicePixelRatio || 1;
   // Three.js 3D Studio PC / Workstation Model for DaVinci Resolve Editor
-const container = document.getElementById('pc-3d-container') || document.querySelector('.threejs-container') || document.body;
-const width = container.clientWidth || 800;
-const height = container.clientHeight || 500;
+  const container = document.getElementById('threejs-container-ANIMATION_5') ||
+                    document.getElementById('pc-3d-container') ||
+                    document.querySelector('.threejs-container') ||
+                    document.body;
+  const width = container.clientWidth || window.innerWidth || 800;
+  const height = container.clientHeight || window.innerHeight || 500;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);

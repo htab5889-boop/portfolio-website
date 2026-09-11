@@ -1,201 +1,193 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Play, Sparkles, Award, Star, Sliders, ChevronDown } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
-// SSR-safe lazy load for 3D canvas
-const Workstation3DCanvas = dynamic(() => import('./3d/Workstation3DCanvas'), {
+const StudioPCWorkstation = dynamic(() => import('./3d/StudioPCWorkstation'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full min-h-[480px] flex items-center justify-center glass-panel rounded-2xl">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-10 h-10 border-4 border-accent-cyan border-t-transparent rounded-full animate-spin"></div>
-        <p className="font-mono text-xs text-accent-cyan">INITIALIZING 3D CANVAS...</p>
-      </div>
+    <div className="w-full h-[520px] rounded-2xl bg-[#07070b]/90 border border-white/[0.07] flex flex-col items-center justify-center gap-3">
+      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+      <span className="font-mono text-xs text-primary tracking-widest uppercase">Initializing 3D Workstation...</span>
     </div>
   ),
 });
 
-// Word-by-word rising animation variants
-const sentenceVariants = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const wordVariants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    rotateX: -45,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.215, 0.61, 0.355, 1],
-    },
-  },
-};
-
 export default function HeroSection() {
-  const headingText = "Crafting Cinematic Videos & Professional Color Grading.";
-
   return (
-    <section className="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#07070c] via-[#0b0b14] to-[#07070c]">
-      {/* Background Neon Ambient Orbs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-accent-cyan/15 rounded-full blur-[140px] pointer-events-none"></div>
-      <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-accent-violet/20 rounded-full blur-[160px] pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-pink/10 rounded-full blur-[180px] pointer-events-none"></div>
+    <section className="relative z-10 pt-36 md:pt-44 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 text-center cinema-radial pb-20 md:pb-28">
+      {/* Ambient Cinematic Gradients */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#2997ff] opacity-[0.08] blur-[160px] rounded-full"></div>
+        <div className="absolute top-[35%] right-[-10%] w-[600px] h-[500px] bg-[#3131c0] opacity-[0.06] blur-[140px] rounded-full"></div>
+        <div className="absolute top-[65%] left-[-10%] w-[500px] h-[500px] bg-[#004882] opacity-[0.05] blur-[150px] rounded-full"></div>
+      </div>
 
-      {/* Grid Pattern Backdrop */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18182815_1px,transparent_1px),linear-gradient(to_bottom,#18182815_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+      <div className="relative z-10">
+        {/* Eyebrow Pill */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] mb-8">
+          <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+          <span className="font-mono text-[11px] font-semibold text-on-surface-variant tracking-wider uppercase">
+            DaVinci Resolve Specialist • Available for Q1/Q2 Projects
+          </span>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Typography & CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Pill Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill border border-accent-cyan/30 mb-6 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
-            >
-              <Sliders className="w-4 h-4 text-accent-cyan animate-pulse" />
-              <span className="font-mono text-xs text-gray-200 tracking-wider uppercase">
-                DaVinci Resolve Specialist
+        {/* Kinetic Animated Main Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-semibold leading-[1.08] tracking-tight text-on-surface max-w-5xl mx-auto mb-6">
+          <span className="animate-kinetic-word delay-1 inline-block mr-3">Crafting</span>
+          <span className="animate-kinetic-word delay-2 inline-block mr-3">Cinematic</span>
+          <span className="animate-kinetic-word delay-3 inline-block mr-3">Videos</span>
+          <span className="animate-kinetic-word delay-4 inline-block mr-3">&amp;</span>
+          <br className="hidden sm:inline" />
+          <span className="animate-kinetic-word delay-5 inline-block mr-3 bg-gradient-to-r from-on-surface via-primary to-primary-container bg-clip-text text-transparent">
+            Professional
+          </span>
+          <span className="animate-kinetic-word delay-6 inline-block mr-3 bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">
+            Color
+          </span>
+          <span className="animate-kinetic-word delay-7 inline-block bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">
+            Grading.
+          </span>
+        </h1>
+
+        {/* Kinetic Animated Subheadline */}
+        <p className="animate-kinetic-word delay-sub text-base sm:text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          Hi, I’m Prince — a driven 16-year-old freelance Video Editor &amp; Colorist. I cooperate closely with clients to transform vision into high-converting, polished videos that captivate audiences.
+        </p>
+
+        {/* Kinetic Animated Call to Actions */}
+        <div className="animate-kinetic-word delay-cta flex flex-wrap items-center justify-center gap-4 mb-14">
+          <a
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary-container text-[#050507] font-semibold text-base sm:text-lg tracking-tight shadow-[0_0_28px_rgba(41,151,255,0.45)] hover:shadow-[0_0_38px_rgba(41,151,255,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+            href="#showcase"
+          >
+            <span>Explore Work Showcase</span>
+            <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <a
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-primary/40 backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-on-surface font-semibold text-base sm:text-lg hover:bg-white/[0.08] active:scale-[0.98] transition-all"
+            href="#contact"
+          >
+            <span>Hire as Freelancer</span>
+          </a>
+        </div>
+
+        {/* HERO 3D PC WORKSTATION SCENE & INTEGRATED DAVINCI PIPELINE */}
+        <div className="animate-kinetic-word delay-stage relative max-w-5xl mx-auto rounded-3xl titanium-glass p-4 sm:p-6 md:p-8 shadow-2xl overflow-hidden group">
+          {/* Glass Specular Reflection Highlight */}
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          {/* Top HUD Bar */}
+          <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-4">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#ff5f56]/80 shadow-[0_0_6px_#ff5f56]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#ffbd2e]/80 shadow-[0_0_6px_#ffbd2e]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#27c93f]/80 shadow-[0_0_6px_#27c93f]"></span>
+              <span className="ml-3 font-mono text-xs text-on-surface-variant flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-sm">desktop_windows</span>
+                DAVINCI RESOLVE STUDIO SUITE // 3D WORKSTATION
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
-            </motion.div>
-
-            {/* Word-by-Word Upward Rising Title */}
-            <motion.h1
-              variants={sentenceVariants}
-              initial="hidden"
-              animate="visible"
-              className="font-display font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1] mb-6"
-            >
-              {headingText.split(' ').map((word, idx) => (
-                <motion.span
-                  key={idx}
-                  variants={wordVariants}
-                  className={`inline-block mr-3 ${
-                    word.includes('Cinematic') || word.includes('Videos')
-                      ? 'gradient-text-cyan'
-                      : word.includes('Color') || word.includes('Grading')
-                      ? 'gradient-text-purple'
-                      : 'text-white'
-                  }`}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
-
-            {/* Bio Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg sm:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-8"
-            >
-              Hi, I&apos;m <span className="font-bold text-white">Prince</span> — a driven 16-year-old freelance Video Editor & Colorist. I cooperate closely with clients to transform vision into high-converting, polished videos that captivate audiences.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap items-center gap-4 mb-12"
-            >
-              <a
-                href="#showcase"
-                className="group flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-accent-cyan via-accent-violet to-accent-pink text-white font-bold text-base shadow-[0_0_30px_rgba(0,242,254,0.3)] hover:shadow-[0_0_45px_rgba(121,40,202,0.5)] hover:scale-105 transition-all duration-300"
-              >
-                <Play className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
-                <span>Explore Work Showcase</span>
-              </a>
-
-              <a
-                href="#contact"
-                className="flex items-center gap-2 px-7 py-4 rounded-full glass-card text-gray-200 hover:text-white font-semibold text-base hover:border-accent-cyan/50 hover:bg-white/10 transition-all duration-300"
-              >
-                <span>Hire as Freelancer</span>
-              </a>
-            </motion.div>
-
-            {/* Stats Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 w-full max-w-xl"
-            >
-              <div>
-                <p className="font-display font-extrabold text-2xl sm:text-3xl text-white">100%</p>
-                <p className="font-mono text-xs text-gray-400 mt-1">Client Reviews</p>
-              </div>
-              <div>
-                <p className="font-display font-extrabold text-2xl sm:text-3xl text-accent-cyan">High</p>
-                <p className="font-mono text-xs text-gray-400 mt-1">Client Retention</p>
-              </div>
-              <div>
-                <p className="font-display font-extrabold text-2xl sm:text-3xl text-accent-violet">DaVinci</p>
-                <p className="font-mono text-xs text-gray-400 mt-1">DaVinci Resolve</p>
-              </div>
-            </motion.div>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 font-mono text-xs text-primary">
+                Rec.709 Live Calibrated
+              </span>
+              <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 font-mono text-xs text-on-surface-variant">
+                32-Bit Float
+              </span>
+            </div>
           </div>
 
-          {/* Right Column: 3D Interactive Canvas */}
-          <div className="lg:col-span-5 relative w-full h-[480px] lg:h-[580px]">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="w-full h-full relative"
-            >
-              <Workstation3DCanvas />
-              {/* Floating Accent Tag */}
-              <div className="absolute bottom-4 left-4 glass-panel px-4 py-2 rounded-xl flex items-center gap-2 pointer-events-none">
-                <Sparkles className="w-4 h-4 text-accent-cyan" />
-                <span className="font-mono text-xs text-gray-300">Drag/Move Mouse to Rotate 3D Workspace</span>
+          {/* 3D Scene Viewport Container */}
+          <div className="relative w-full rounded-2xl overflow-hidden" id="pc-3d-container">
+            <StudioPCWorkstation />
+
+            {/* Interactive Hint Overlay Pill */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#050507]/80 backdrop-blur-xl border border-white/15 font-mono text-xs text-primary shadow-lg">
+              <span className="material-symbols-outlined text-base animate-pulse">pan_tool</span>
+              <span>Drag / move cursor to inspect 3D Workstation</span>
+            </div>
+
+            {/* On-screen DaVinci Pipeline Active Monitor Overlay Tag */}
+            <div className="absolute top-4 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-[#0e0e11]/80 backdrop-blur-md border border-white/10 font-mono text-xs text-on-surface-variant">
+              <span className="w-2 h-2 rounded-full bg-[#34c759] animate-ping"></span>
+              <span>GPU COLOR ENGINE ACTIVE</span>
+            </div>
+          </div>
+
+          {/* DaVinci Node Pipeline Integrated Flanking Cards */}
+          <div className="mt-6 pt-6 border-t border-white/10 text-left">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2 font-mono text-xs text-primary">
+                <span className="material-symbols-outlined text-sm">hub</span>
+                <span className="uppercase font-semibold">Node Pipeline Scopes</span>
               </div>
-              {/* DaVinci Resolve Logo Badge */}
-              <div className="absolute top-4 right-4 glass-panel px-3 py-2 rounded-xl flex items-center gap-2 pointer-events-none border border-white/10">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg"
-                  alt="DaVinci Resolve Logo"
-                  className="w-6 h-6"
-                />
-                <span className="font-mono text-[10px] text-gray-300 tracking-wider">POWERED BY DAVINCI RESOLVE</span>
+              <span className="font-mono text-on-surface-variant text-xs">YRGB COLOR MANAGED</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Node 01 */}
+              <div className="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono text-xs text-primary font-semibold">NODE 01</span>
+                  <span className="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+                </div>
+                <div className="text-[16px] text-on-surface font-semibold mb-1">Exposure &amp; Balance</div>
+                <p className="text-xs text-on-surface-variant leading-relaxed">Black/white calibration &amp; lift gamma gain leveling.</p>
               </div>
-            </motion.div>
+
+              {/* Node 02 */}
+              <div className="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono text-xs text-primary font-semibold">NODE 02</span>
+                  <span className="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+                </div>
+                <div className="text-[16px] text-on-surface font-semibold mb-1">CST / Camera Log</div>
+                <p className="text-xs text-on-surface-variant leading-relaxed">Sony S-Log3 / Arri LogC to Davinci Wide Gamut.</p>
+              </div>
+
+              {/* Node 03 */}
+              <div className="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono text-xs text-primary font-semibold">NODE 03</span>
+                  <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_6px_#2997ff]"></span>
+                </div>
+                <div className="text-[16px] text-on-surface font-semibold mb-1">Skin Tone Isolate</div>
+                <p className="text-xs text-on-surface-variant leading-relaxed">Precision 3D Qualifier + vector scope lock.</p>
+              </div>
+
+              {/* Node 04 */}
+              <div className="p-4 rounded-xl bg-white/[0.03] backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/60 transition-all">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-mono text-xs text-primary font-semibold">NODE 04</span>
+                  <span className="w-2 h-2 rounded-full bg-[#27c93f] shadow-[0_0_6px_#27c93f]"></span>
+                </div>
+                <div className="text-[16px] text-on-surface font-semibold mb-1">Filmic Print &amp; Grain</div>
+                <p className="text-xs text-on-surface-variant leading-relaxed">Kodak 2383 emulation &amp; 35mm optical grain scatter.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Bar */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-14 pt-8 border-t border-white/10 text-center">
+          <div>
+            <div className="text-3xl md:text-4xl text-on-surface font-semibold">100%</div>
+            <div className="font-mono text-[11px] text-on-surface-variant tracking-wider uppercase mt-1">Client Reviews</div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl text-primary font-semibold">80k+</div>
+            <div className="font-mono text-[11px] text-on-surface-variant tracking-wider uppercase mt-1">Peak Viral Views</div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl text-on-surface font-semibold">DaVinci</div>
+            <div className="font-mono text-[11px] text-on-surface-variant tracking-wider uppercase mt-1">DaVinci Resolve Specialist</div>
+          </div>
+          <div>
+            <div className="text-3xl md:text-4xl text-primary font-semibold">100%</div>
+            <div className="font-mono text-[11px] text-on-surface-variant tracking-wider uppercase mt-1">Repeat Client Rate</div>
           </div>
         </div>
       </div>
-
-      {/* Scroll Down Indicator */}
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1.2 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 p-2 rounded-full glass-panel text-gray-400 hover:text-white transition-colors"
-        aria-label="Scroll to About section"
-      >
-        <ChevronDown className="w-5 h-5" />
-      </motion.a>
     </section>
   );
 }

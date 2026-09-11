@@ -1,257 +1,208 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Film, X, Sliders } from 'lucide-react';
 import { sampleVideos, VideoProject } from '@/data/videos';
 
 export default function VideoShowcaseSection() {
   const [activeTab, setActiveTab] = useState<'all' | 'motion-graphics' | 'promotional-editing' | 'travel-education'>('all');
   const [selectedVideo, setSelectedVideo] = useState<VideoProject | null>(null);
 
-  const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'motion-graphics', label: 'Motion Graphics' },
-    { id: 'promotional-editing', label: 'Promotional Editing' },
-    { id: 'travel-education', label: 'Travel & Education' },
-  ];
-
-  const filteredVideos = activeTab === 'all' 
-    ? sampleVideos 
+  const filteredVideos = activeTab === 'all'
+    ? sampleVideos
     : sampleVideos.filter(v => v.category === activeTab);
 
-  /** Get YouTube thumbnail URL */
-  const getYoutubeThumbnail = (youtubeId: string) =>
-    `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
+  const projectImages: Record<string, string> = {
+    'mg-1': 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrr2AzoLniMODj3cJO5MYcEUTHLCNX1R_mXzj4arIomEhfL-pkJGSL9oj7i5QxiNktGx3ErY1sy5AqxyWh5DybUJBmFqLeKCkT-dTQeQgb7Ovh9L4flhq1SAXr1RT-1K4LHbCoBlvYDfywZf_3M0uYO7rGoqZ3CEDa9wfcYeB3qFHesxJ7fdKbiO_RQeSeL6wByc8wfQr4kYwkXHiF5m_tipgSg404JWkGMlgNPpvt_b5VRdyWlJ2gwQ',
+    'pe-1': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDz5khYgOTljcOXwaJknn9CqUM3ZaP7vtbvN5gDfhPDSGiSOyC2UkKvHuZD1TeJQZJkadwsN2fit9k4qb5Drnc6OygopXd_pWgTuJR--5hnTczRHIRsSCICTDCGWsd2Kfw_t-bWa1Al-XXui1-kjvrKE52IK0AGbL8xA05AbZtWPTRNLHhMieDViBXobtKcKbrgGF3uE6MIVk-Jy4Cv-BEMd3X6Ewgm7gsTlmWLY7lydmq7XFU8H1Y-ZQ',
+    'pe-2': 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9JPrlgqe44POr6NjqdDqC-wGbIDFuNVDiz-lgLFEqV0DF2MDS-VTEsrz53ZCtmSiyde3qJFPJ4tazZcVjM97EGeoylt4WFvUlTdAnqHqoZPDmB1-n6GTWmVAJ6kPFEaw45vol8ixLgacl0Ex0MW6T9ahBbMdvQn_3z58l8ifbFiZnoKOs41935vaTE4sCyM4tz7Qi4Hj-RymTQs-qUpO7w-L4uPp5XQQDpvX4OxzcCeSMujUYzeJzeg',
+    'pe-3': 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXVRBZgMK4V_gRTfj8A_jI2irL1lZYIZgG-LjNJxX-wwtsU0XQKOnpTxDBnKKcaU3Ut2r3DYyKsI81xxNe1luz3zfkMGM14sDn5BPtGzzTcGHtIxqfKMHvP9YvBoVBSDBKvPhiBK9lIZyDGmvOsVBPUCB5E90pUqrZI0tsT-zDBUeObEaImbtBtkd3lAL5NwC1YuRxTqVno1jYbjTSCRCMI9eYAEcHX4yyEnJPzgaMGQWXxQL0-uhpUw',
+    'te-1': 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2swgn83I1DKMCjPzm8zXUEgHq2ePAG91wXAwFP0hAW7xt5XtUIxn798sWXDu6Tn_cxxkakf1OY57BoiXUWjbFPwOz8O3x-JSALmveM1t5gZ8VZuVI1HYewR4XiFwgFsCiD8J6g9sfMefTU7agt5LVh0agb38j6NuqzICFhepmQuDcsDjAKtbeKh2ZDPXdc9OQLvA0mjCSPF4-vjMubMhZ37Ry3WieHrRaV4y0Tf4bfDA9E_-ckQTTaQ',
+  };
+
+  const getThumbnail = (video: VideoProject) => {
+    if (video.thumbnailOverride) return video.thumbnailOverride;
+    if (projectImages[video.id]) return projectImages[video.id];
+    if (video.youtubeId) return `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+    return '/images/placeholder.jpg';
+  };
 
   return (
-    <section id="showcase" className="py-28 relative bg-[#07070c] overflow-hidden">
-      {/* Background Neon Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-accent-violet/15 rounded-full blur-[180px] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill border border-accent-pink/30 mb-4"
-          >
-            <Film className="w-4 h-4 text-accent-pink" />
-            <span className="font-mono text-xs text-gray-200 uppercase tracking-widest">
-              PORTFOLIO SHOWCASE
-            </span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-black text-4xl sm:text-5xl text-white tracking-tight leading-tight mb-4"
-          >
-            Crafted for <span className="gradient-text-purple">Visual Impact.</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-300 font-light text-base sm:text-lg"
-          >
+    <section className="py-24 max-w-container-max mx-auto px-6 md:px-12 lg:px-16 border-t border-white/10" id="showcase">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase mb-2">
+            <span className="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#2997ff]"></span>
+            PORTFOLIO SHOWCASE
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-on-surface font-semibold">Crafted for Visual Impact.</h2>
+          <p className="text-base sm:text-lg text-on-surface-variant mt-2">
             Categorized video projects across Motion Graphics, Promotional Editing, and Travel/Education.
-          </motion.p>
+          </p>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id as any)}
-              className={`px-6 py-3 rounded-full font-mono text-xs sm:text-sm font-semibold transition-all duration-300 ${
-                activeTab === cat.id
-                  ? 'bg-gradient-to-r from-accent-cyan to-accent-violet text-white shadow-[0_0_20px_rgba(0,242,254,0.4)] scale-105'
-                  : 'glass-card text-gray-400 hover:text-white hover:border-white/20'
+        {/* Filter Pills */}
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all ${
+              activeTab === 'all'
+                ? 'bg-primary-container text-[#050507] shadow-sm scale-105'
+                : 'bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'
+            }`}
+          >
+            All Projects
+          </button>
+          <button
+            onClick={() => setActiveTab('motion-graphics')}
+            className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all ${
+              activeTab === 'motion-graphics'
+                ? 'bg-primary-container text-[#050507] shadow-sm scale-105'
+                : 'bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'
+            }`}
+          >
+            Motion Graphics
+          </button>
+          <button
+            onClick={() => setActiveTab('promotional-editing')}
+            className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all ${
+              activeTab === 'promotional-editing'
+                ? 'bg-primary-container text-[#050507] shadow-sm scale-105'
+                : 'bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'
+            }`}
+          >
+            Promotional Editing
+          </button>
+          <button
+            onClick={() => setActiveTab('travel-education')}
+            className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all ${
+              activeTab === 'travel-education'
+                ? 'bg-primary-container text-[#050507] shadow-sm scale-105'
+                : 'bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'
+            }`}
+          >
+            Travel &amp; Education
+          </button>
+        </div>
+      </div>
+
+      {/* Project Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredVideos.map((video) => {
+          const isWide = video.id === 'te-1';
+          return (
+            <article
+              key={video.id}
+              onClick={() => setSelectedVideo(video)}
+              className={`group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between cursor-pointer ${
+                isWide ? 'lg:col-span-2' : ''
               }`}
             >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+              <div>
+                <div className={`relative aspect-video ${isWide ? 'lg:aspect-[21/9]' : ''} bg-[#0c0d11] overflow-hidden`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={video.title}
+                    src={getThumbnail(video)}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
 
-        {/* Video Cards Grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredVideos.map((video) => (
-              <motion.div
-                key={video.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                onClick={() => setSelectedVideo(video)}
-                className="glass-card rounded-3xl overflow-hidden group cursor-pointer border border-white/10 hover:border-accent-cyan/40 transition-all duration-400"
-              >
-                {/* Video Preview */}
-                <div className="relative aspect-[9/16] w-full overflow-hidden bg-surface-light">
-                  {video.youtubeId ? (
-                    /* YouTube Thumbnail Preview */
-                    <img
-                      src={getYoutubeThumbnail(video.youtubeId)}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                  ) : (
-                    /* Local Video Preview (hover to play) */
-                    <video
-                      src={video.videoUrl}
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
-                      onMouseLeave={(e) => { const v = e.currentTarget as HTMLVideoElement; v.pause(); v.currentTime = 0; }}
-                    />
-                  )}
-                  {/* Dark Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07070c] via-black/30 to-transparent group-hover:via-transparent transition-all pointer-events-none"></div>
-
-                  {/* Play Overlay Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-16 h-16 rounded-full bg-accent-cyan/90 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:bg-accent-violet transition-all duration-300 shadow-[0_0_25px_rgba(0,242,254,0.6)]">
-                      <Play className="w-7 h-7 text-white fill-white ml-1" />
-                    </div>
+                  {/* Badges */}
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    {video.colorGraded && (
+                      <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-mono text-xs text-primary border border-white/15">
+                        Color Graded
+                      </span>
+                    )}
+                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md font-mono text-xs text-on-surface-variant border border-white/15">
+                      {video.categoryLabel}
+                    </span>
                   </div>
 
-                  {/* Color Graded Badge */}
-                  {video.colorGraded && (
-                    <div className="absolute top-3 left-3 px-3 py-1 rounded-full glass-panel text-[10px] font-mono text-accent-cyan flex items-center gap-1.5 border border-accent-cyan/40 pointer-events-none">
-                      <Sliders className="w-3 h-3" />
-                      <span>Color Graded</span>
+                  {/* Views Pill */}
+                  {video.id === 'pe-3' && (
+                    <div className="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-primary text-[#050507] font-mono text-xs font-bold shadow-lg">
+                      80k Peak Views
+                    </div>
+                  )}
+                  {video.id === 'pe-2' && (
+                    <div className="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-primary-container text-[#050507] font-mono text-xs font-bold shadow-lg">
+                      30k+ Views
                     </div>
                   )}
 
-                  {/* Category Pill */}
-                  <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full glass-panel text-[10px] font-mono text-gray-200 pointer-events-none">
-                    {video.categoryLabel}
+                  {/* Play Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 backdrop-blur-[2px]">
+                    <div className="w-14 h-14 rounded-full bg-primary-container text-[#050507] flex items-center justify-center shadow-[0_0_24px_rgba(41,151,255,0.7)] group-hover:scale-110 transition-transform">
+                      <span className="material-symbols-outlined text-2xl">play_arrow</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Content Details */}
                 <div className="p-6">
-                  <h3 className="font-display font-bold text-xl text-white mb-2 group-hover:text-accent-cyan transition-colors">
+                  <h3 className="text-lg text-on-surface font-semibold group-hover:text-primary transition-colors">
                     {video.title}
                   </h3>
-                  <p className="text-gray-400 text-xs font-light line-clamp-2 leading-relaxed mb-4">
+                  <p className="text-sm text-on-surface-variant mt-2 mb-4 leading-relaxed">
                     {video.description}
                   </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
-                    {video.softwareUsed.map((sw) => (
-                      <span
-                        key={sw}
-                        className="px-2.5 py-0.5 rounded-full bg-white/5 text-[10px] font-mono text-gray-300"
-                      >
-                        {sw}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+              </div>
 
-        {/* Video Player Modal Overlay */}
-        <AnimatePresence>
-          {selectedVideo && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedVideo(null)}
-              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6"
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                className="glass-card w-full max-w-4xl rounded-3xl overflow-hidden border border-white/20 relative flex flex-col"
-              >
-                {/* Modal Header */}
-                <div className="p-5 border-b border-white/10 flex items-center justify-between">
-                  <div>
-                    <h4 className="font-display font-bold text-lg text-white">
-                      {selectedVideo.title}
-                    </h4>
-                    <p className="font-mono text-xs text-accent-cyan">
-                      {selectedVideo.categoryLabel} • {selectedVideo.clientType}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setSelectedVideo(null)}
-                    className="p-2 rounded-full glass-pill hover:bg-white/20 text-gray-300 hover:text-white transition-colors"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-
-                {/* Video Player */}
-                <div className="relative aspect-[9/16] w-full bg-black mx-auto max-h-[70vh] flex justify-center">
-                  {selectedVideo.youtubeId ? (
-                    /* YouTube Embed */
-                    <iframe
-                      src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
-                      title={selectedVideo.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                      style={{ border: 'none' }}
-                    />
-                  ) : (
-                    /* Local Video Player */
-                    <video
-                      src={selectedVideo.videoUrl}
-                      controls
-                      autoPlay
-                      className="w-full h-full"
-                    />
-                  )}
-                </div>
-
-                {/* Modal Footer Description */}
-                <div className="p-6 bg-surface/90">
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 font-light">
-                    {selectedVideo.description}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs text-gray-400">Software:</span>
-                      {selectedVideo.softwareUsed.map((sw) => (
-                        <span
-                          key={sw}
-                          className="px-3 py-1 rounded-full bg-white/5 text-xs font-mono text-accent-cyan border border-white/10"
-                        >
-                          {sw}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              <div className="px-6 pb-6 pt-3 border-t border-white/10 font-mono text-xs text-on-surface-variant flex items-center gap-2">
+                <span className="material-symbols-outlined text-xs text-primary">circle</span>
+                {video.softwareUsed.map((sw, idx) => (
+                  <React.Fragment key={sw}>
+                    <span>{sw}</span>
+                    {idx < video.softwareUsed.length - 1 && <span className="text-outline-variant">•</span>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </div>
+
+      {/* Video Modal Player */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-4xl rounded-2xl titanium-glass overflow-hidden border border-white/20 p-2 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 border-b border-white/10">
+              <h3 className="text-lg font-semibold text-white">{selectedVideo.title}</h3>
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="p-1 rounded-lg text-on-surface-variant hover:text-white hover:bg-white/10 transition-colors"
+              >
+                <span className="material-symbols-outlined text-xl">close</span>
+              </button>
+            </div>
+            <div className="relative aspect-video w-full bg-black rounded-xl overflow-hidden">
+              {selectedVideo.youtubeId ? (
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                  title={selectedVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : selectedVideo.videoUrl ? (
+                <video className="w-full h-full object-contain" controls autoPlay src={selectedVideo.videoUrl} />
+              ) : (
+                <div className="flex items-center justify-center h-full text-on-surface-variant font-mono">
+                  Video preview unavailable
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
-

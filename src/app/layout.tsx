@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Syne, Space_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -8,16 +8,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const syne = Syne({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-syne',
-  display: 'swap',
-});
-
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-jetbrains',
   display: 'swap',
 });
 
@@ -58,8 +51,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable} ${spaceMono.variable} scroll-smooth`}>
-      <body className="bg-[#07070c] text-gray-100 antialiased selection:bg-accent-violet selection:text-white">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark scroll-smooth`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-[#050507] text-[#e5e1e5] antialiased selection:bg-primary-container selection:text-on-primary-container">
         {children}
       </body>
     </html>
