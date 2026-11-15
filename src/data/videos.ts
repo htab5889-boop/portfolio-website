@@ -1,7 +1,7 @@
 export interface VideoProject {
   id: string;
   title: string;
-  category: 'motion-graphics' | 'promotional-editing' | 'travel-education';
+  category: 'motion-graphics' | 'promotional-editing' | 'travel-education' | 'vlogs';
   categoryLabel: string;
   videoUrl?: string; // Local MP4/MOV file path in /public (fallback)
   youtubeId?: string; // YouTube video ID for embed
@@ -83,6 +83,30 @@ export const sampleVideos: VideoProject[] = [
     description: 'A cinematic travel and educational piece covering the magnificent Bhojpur Temple. Smooth transitions, warm color grading, and atmospheric sound design bring the ancient architecture to life.',
     softwareUsed: ['DaVinci Resolve', 'Color Grading'],
     clientType: 'Travel & Educational Content',
+    colorGraded: true,
+  },
+  {
+    id: 'te-2',
+    title: 'Before vs After — Travel & Education Color Grade',
+    category: 'travel-education',
+    categoryLabel: 'Travel & Education',
+    youtubeId: 'Parac8JpypY',
+    description: 'Side-by-side color grading breakdown showcasing raw flat log footage transformed into a vivid, cinematic grade with balanced exposure, skin tone refinement, and rich contrast in DaVinci Resolve.',
+    softwareUsed: ['DaVinci Resolve', 'Color Grading', 'Node Pipeline'],
+    clientType: 'Travel & Education / Colorist Showcase',
+    colorGraded: true,
+  },
+
+  // ── Vlogs ──
+  {
+    id: 'vl-1',
+    title: 'Halloween Vlog — Cinematic Edit',
+    category: 'vlogs',
+    categoryLabel: 'Vlogs',
+    youtubeId: 'hJy-jSkeEZ8',
+    description: 'A high-energy, cinematic vlog edit capturing spooky Halloween night storytelling with dynamic pacing, punchy jump cuts, immersive sound design, and atmospheric color grading.',
+    softwareUsed: ['DaVinci Resolve', 'Color Grading', 'Sound Design'],
+    clientType: 'Vlog / YouTube Creator',
     colorGraded: true,
   },
 ];

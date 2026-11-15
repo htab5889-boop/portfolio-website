@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { sampleVideos, VideoProject } from '@/data/videos';
 
 export default function VideoShowcaseSection() {
-  const [activeTab, setActiveTab] = useState<'all' | 'motion-graphics' | 'promotional-editing' | 'travel-education'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'motion-graphics' | 'promotional-editing' | 'travel-education' | 'vlogs'>('all');
   const [selectedVideo, setSelectedVideo] = useState<VideoProject | null>(null);
 
   const filteredVideos = activeTab === 'all'
@@ -37,7 +37,7 @@ export default function VideoShowcaseSection() {
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-on-surface font-semibold">Crafted for Visual Impact.</h2>
           <p className="text-base sm:text-lg text-on-surface-variant mt-2">
-            Categorized video projects across Motion Graphics, Promotional Editing, and Travel/Education.
+            Categorized video projects across Motion Graphics, Promotional Editing, Travel &amp; Education, and Vlogs.
           </p>
         </div>
 
@@ -83,29 +83,46 @@ export default function VideoShowcaseSection() {
           >
             Travel &amp; Education
           </button>
+          <button
+            onClick={() => setActiveTab('vlogs')}
+            className={`px-4 py-2 rounded-full font-mono text-xs font-semibold transition-all ${
+              activeTab === 'vlogs'
+                ? 'bg-primary-container text-[#050507] shadow-sm scale-105'
+                : 'bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-on-surface-variant shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'
+            }`}
+          >
+            Vlogs
+          </button>
         </div>
       </div>
 
       {/* Project Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredVideos.map((video) => {
-          const isWide = video.id === 'te-1';
           return (
             <article
               key={video.id}
               onClick={() => setSelectedVideo(video)}
-              className={`group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between cursor-pointer ${
-                isWide ? 'lg:col-span-2' : ''
-              }`}
+              className="group rounded-2xl titanium-glass overflow-hidden hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               <div>
-                <div className={`relative aspect-video ${isWide ? 'lg:aspect-[21/9]' : ''} bg-[#0c0d11] overflow-hidden`}>
+                <div className="relative aspect-video bg-[#0c0d11] overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    alt={video.title}
-                    src={getThumbnail(video)}
-                  />
+                  {video.videoUrl && !video.thumbnailOverride && !projectImages[video.id] && !video.youtubeId ? (
+                    <video
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                      src={`${video.videoUrl}#t=0.5`}
+                      preload="metadata"
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      alt={video.title}
+                      src={getThumbnail(video)}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent"></div>
 
                   {/* Badges */}
@@ -193,7 +210,7 @@ export default function VideoShowcaseSection() {
                   allowFullScreen
                 />
               ) : selectedVideo.videoUrl ? (
-                <video className="w-full h-full object-contain" controls autoPlay src={selectedVideo.videoUrl} />
+                <video className="w-full h-full object-contain" controls autoPlay playsInline src={selectedVideo.videoUrl} />
               ) : (
                 <div className="flex items-center justify-center h-full text-on-surface-variant font-mono">
                   Video preview unavailable
